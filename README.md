@@ -1,4 +1,4 @@
-# tiralabra
+# Maze Pathfinder project
 Repository for school project on Data structures and Algorithms
 
 [Määrittelydokumentti](/Dokumentaatio/Maarittelydokumentti.md)
