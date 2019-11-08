@@ -6,15 +6,17 @@ Projekti toteutetaan Javalla.
 
 <h3> Käytetyt algoritmit ja tietorakenteet </h3>
 
-Käytän työssäni valmista labyrintti-generaattoria (haettu netistä), ja ratkaisuun käytän A* hakua ja leveyshakua. A* ja Leveyshaku tulee toteutetuksi taulukoiden avulla.
+Käytän työssäni valmista labyrintti-generaattoria [Daedalusta](https://www.astrolog.org/labyrnth/daedalus.htm). Generoin ohjelmalla 2D labyrinttejä, ja koodaan erilaisia algoritmeja nopeimman reitin ratkaisemiseen. Algoritmeiksi valitsen Leveyshaun, A* ja Trémauxin algoritmin.
 
 <h3> Mikä on ratkaistava ongelma ja miksi kyseiset tietorakenteet </h3>
 
-Ratkaistava ongelma on lyhin/nopein reitti labyrintissä. Käytän kyseisiä algoritmejä, koska labyrintin saa helposti muunnettua verkoksi, ja on mukava soveltaa aiemmilla kursseilla opittuja asioita käytännön työssä. A* toimii, jos tiedossa on maali. Jos tietoa ei ole maalin sijainnista, leveyshaku toimii.
+Ratkaistava ongelma on lyhin/nopein reitti labyrintissä. Leveyshaulla ja A* saa nopeasti ja varmasti haettua nopeimman reitin. Samalla voi vertailla niiden nopeuksia erikokoisissa labyrinteissä. Kolmas algoritmi on Tremauxin algoritmi. Tämän valitsin siksi, että algoritmin toimintatapa on mielenkiintoinen, ja sitä voisi käyttää ihminen ratkaistakseen labyrintin.
+
+![Tremaux](./Kuvat/TremauxDescription.png)
 
 <h3> Ohjelmalle syötettävät syötteet ja niiden käyttö </h3>
 
-Ohjelma saa syötteenä labyrintin koon. Oletuksena on, että labyrintti on neliö, joten syöte on sivun pituus. Sitä käytetään sitten generoimaan labyrintti valmiilla algoritmilla.
+Ohjelma saa syötteenä tiedostoksi (bitmapiksi) generoidun labyrintin. Tämä muutetaan sitten ohjelmassa taulukoksi ja se sitten ratkaistaan. Mahdollisesti myös piirretään uusi bitmappi missä on ratkaistu reitti.
 
 <h3> Tavoitteena olevat aikavaativuudet ja tilavaativuudet </h3>
 
