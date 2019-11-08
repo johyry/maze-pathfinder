@@ -23,11 +23,15 @@ jacocoTestReport {
     }
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it,
+                fileTree(dir: it,
                     exclude: ['pathfinder.app/**',
-                    'pathfinder.bitmapreader**',
-                    'pathfinder.domain/CoordinatesXY**'])
-        })
+                        '**/App**',
+                        '**/Main**',
+                        'pathfinder.bitmapreader/**',
+                        '**/BitmapReader**',
+                        'pathfinder.domain/**',
+                        '**/CoordinatesXY**'])
+            })
     }
 }
 
