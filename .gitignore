@@ -1,3 +1,5 @@
 /maze-pathfinder/build/
 /maze-pathfinder/gradle.properties
 
+/build/
+/.nb-gradle/
