@@ -12,7 +12,7 @@ Käytän työssäni valmista labyrintti-generaattoria [Daedalusta](https://www.a
 
 Ratkaistava ongelma on lyhin/nopein reitti labyrintissä. Leveyshaulla ja A* saa nopeasti ja varmasti haettua nopeimman reitin. Samalla voi vertailla niiden nopeuksia erikokoisissa labyrinteissä. Kolmas algoritmi on Tremauxin algoritmi. Tämän valitsin siksi, että algoritmin toimintatapa on mielenkiintoinen, ja sitä voisi käyttää ihminen ratkaistakseen labyrintin.
 
-![Tremaux](./Kuvat/TremauxDescription.png)
+![Tremaux](../Kuvat/TremauxDescription.png)
 
 <h3> Ohjelmalle syötettävät syötteet ja niiden käyttö </h3>
 
