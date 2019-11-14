@@ -24,9 +24,9 @@ public class App {
         // initializes bitmapreader and calls the method readfileandarray to get array representing the bitmap
         // in the array 1 = path, 0 = wall
 //        BitmapReader bitmapreader = new BitmapReader("example1.bmp"); // koko 5x5
-        BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 11x11
+//        BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 11x11
 //        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001
-        // BitmapReader bitmapreader = new BitmapReader("example4.bmp");
+         BitmapReader bitmapreader = new BitmapReader("example4.bmp");
 
         int[][] maze = bitmapreader.readFileAndReturnArray();
         
@@ -39,9 +39,9 @@ public class App {
         Thremaux thremaux = new Thremaux(maze, start, goal);
         thremaux.search();
 
-//        BreathFirstSearch leveyshaku = new BreathFirstSearch(maze, start, goal);
+        BreathFirstSearch leveyshaku = new BreathFirstSearch(maze, start, goal);
 //        //printMaze(maze);
-//        leveyshaku.init();
+        leveyshaku.init();
         //printMaze(maze);
 //        System.out.println(leveyshaku.findStart());
 //        System.out.println(leveyshaku.findGoal());

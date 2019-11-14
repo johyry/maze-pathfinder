@@ -67,7 +67,7 @@ public class Thremaux {
             
             calculationsDone++;
             
-            System.out.println("Round: " + calculationsDone + " x: " + x + " y: " + y);
+//            System.out.println("Round: " + calculationsDone + " x: " + x + " y: " + y);
 
             // Tarkistetaan, ollaanko maalissa
             if (x == goal.getX() && y == goal.getY()) {
@@ -124,6 +124,7 @@ public class Thremaux {
             }
         }
         
+        System.out.println("Rounds done: " + calculationsDone);
         return foundRoute;
 
     }

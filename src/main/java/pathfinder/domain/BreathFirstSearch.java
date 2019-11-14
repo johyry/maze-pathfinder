@@ -41,6 +41,8 @@ public class BreathFirstSearch {
      */
     public int search() {
         Queue<Coordinates> jono = new LinkedList<>();
+        
+        int roundsDone = 0;
 
         jono.add(start);
 
@@ -52,6 +54,8 @@ public class BreathFirstSearch {
         vierailtu[0][start.getX()] = 1;
 
         while (!jono.isEmpty()) {
+            roundsDone++;
+            
             Coordinates xy = jono.poll();
             int x = xy.getX();
             int y = xy.getY();
@@ -114,7 +118,7 @@ public class BreathFirstSearch {
 
         }
 
-        
+        System.out.println("Rounds done leveyshaku: " + roundsDone);
         return etaisyys[goal.getY()][goal.getX()];
 }
 
