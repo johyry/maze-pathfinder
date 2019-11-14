@@ -21,12 +21,12 @@ public class MazeAnalyzer {
      *
      * @return CoordinatesXY olion lähdön koordinaateista, null jos ei löytynyt
      */
-    public CoordinatesXY findStartCoordinates() {
+    public Coordinates findStartCoordinates() {
 
         for (int i = 0; i < maze[0].length; i++) {
             int node = maze[0][i];
             if (node == 1) {
-                return new CoordinatesXY(0, i);
+                return new Coordinates(0, i);
             }
         }
         return null;
@@ -37,12 +37,12 @@ public class MazeAnalyzer {
      *
      * @return CoordinatesXY olion maalin koordinaateista
      */
-    public CoordinatesXY findGoalCoordinates() {
+    public Coordinates findGoalCoordinates() {
 
         for (int i = 0; i < maze[0].length; i++) {
             int node = maze[maze.length - 1][i];
             if (node == 1) {
-                return new CoordinatesXY(maze.length-1, i);
+                return new Coordinates(maze.length-1, i);
             }
         }
         return null;

@@ -8,7 +8,7 @@ package pathfinder.app;
 import java.io.IOException;
 import pathfinder.bitmapreader.BitmapReader;
 import pathfinder.domain.BreathFirstSearch;
-import pathfinder.domain.CoordinatesXY;
+import pathfinder.domain.Coordinates;
 import pathfinder.domain.MazeAnalyzer;
 
 /**
@@ -30,8 +30,8 @@ public class App {
         int[][] maze = bitmapreader.readFileAndReturnArray();
         
         MazeAnalyzer analyzer = new MazeAnalyzer(maze);
-        CoordinatesXY start = analyzer.findStartCoordinates();
-        CoordinatesXY goal = analyzer.findGoalCoordinates();
+        Coordinates start = analyzer.findStartCoordinates();
+        Coordinates goal = analyzer.findGoalCoordinates();
         
         System.out.println("Haetaan nopein reitti leveyshaulla: ");
 

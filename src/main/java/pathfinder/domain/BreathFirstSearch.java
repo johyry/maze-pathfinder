@@ -15,12 +15,12 @@ import java.util.Queue;
 public class BreathFirstSearch {
 
     private int[][] maze;
-    private CoordinatesXY start;
-    private CoordinatesXY goal;
+    private Coordinates start;
+    private Coordinates goal;
     
-    private CoordinatesXY[][] reitti;
+    private Coordinates[][] reitti;
 
-    public BreathFirstSearch(int[][] maze, CoordinatesXY start, CoordinatesXY goal) {
+    public BreathFirstSearch(int[][] maze, Coordinates start, Coordinates goal) {
         this.maze = maze;
         this.start = start;
         this.goal = goal;
@@ -40,19 +40,19 @@ public class BreathFirstSearch {
      * @return int reitin pituuden
      */
     public int search() {
-        Queue<CoordinatesXY> jono = new LinkedList<>();
+        Queue<Coordinates> jono = new LinkedList<>();
 
         jono.add(start);
 
         int[][] vierailtu = new int[maze.length][maze[0].length];
         int[][] etaisyys = new int[maze.length][maze[0].length];
-        reitti = new CoordinatesXY[maze.length][maze[0].length];
+        reitti = new Coordinates[maze.length][maze[0].length];
 
         etaisyys[0][start.getX()] = 0;
         vierailtu[0][start.getX()] = 1;
 
         while (!jono.isEmpty()) {
-            CoordinatesXY xy = jono.poll();
+            Coordinates xy = jono.poll();
             int x = xy.getX();
             int y = xy.getY();
 
@@ -69,13 +69,13 @@ public class BreathFirstSearch {
                     // Onko reitillä vierailtu
                     if (vierailtu[y - 1][x] != 1) {
                         // Reitin lisäys jonoon
-                        jono.add(new CoordinatesXY(y - 1, x));
+                        jono.add(new Coordinates(y - 1, x));
                         // Ylläolevan pisteen vierailluksi merkitseminen
                         vierailtu[y - 1][x] = 1;
                         // Etäisyyden mittaaminen ylläolevalle pisteelle
                         etaisyys[y - 1][x] = etaisyys[y][x] + 1;
                         // Mistä pisteestä ollaan tultu ylläolevaan pisteeseen
-                        reitti[y - 1][x] = new CoordinatesXY(y, x);
+                        reitti[y - 1][x] = new Coordinates(y, x);
                     }
                 }
             }
@@ -83,10 +83,10 @@ public class BreathFirstSearch {
             // Reitti oikealle
             if (maze[y][x + 1] == 1) {
                 if (vierailtu[y][x + 1] != 1) {
-                    jono.add(new CoordinatesXY(y, x + 1));
+                    jono.add(new Coordinates(y, x + 1));
                     vierailtu[y][x + 1] = 1;
                     etaisyys[y][x + 1] = etaisyys[y][x] + 1;
-                    reitti[y][x + 1] = new CoordinatesXY(y, x);
+                    reitti[y][x + 1] = new Coordinates(y, x);
                 }
             }
 
@@ -94,10 +94,10 @@ public class BreathFirstSearch {
             if (y != maze.length - 1) {
                 if (maze[y + 1][x] == 1) {
                     if (vierailtu[y + 1][x] != 1) {
-                        jono.add(new CoordinatesXY(y + 1, x));
+                        jono.add(new Coordinates(y + 1, x));
                         vierailtu[y + 1][x] = 1;
                         etaisyys[y + 1][x] = etaisyys[y][x] + 1;
-                        reitti[y + 1][x] = new CoordinatesXY(y, x);
+                        reitti[y + 1][x] = new Coordinates(y, x);
                     }
                 }
             }
@@ -105,10 +105,10 @@ public class BreathFirstSearch {
             // Reitti vasemmalle
             if (maze[y][x - 1] == 1) {
                 if (vierailtu[y][x - 1] != 1) {
-                    jono.add(new CoordinatesXY(y, x - 1));
+                    jono.add(new Coordinates(y, x - 1));
                     vierailtu[y][x - 1] = 1;
                     etaisyys[y][x - 1] = etaisyys[y][x] + 1;
-                    reitti[y][x - 1] = new CoordinatesXY(y, x);
+                    reitti[y][x - 1] = new Coordinates(y, x);
                 }
             }
 
@@ -120,11 +120,11 @@ public class BreathFirstSearch {
 
     
 
-    public void printRoute(CoordinatesXY[][] reitti) {
+    public void printRoute(Coordinates[][] reitti) {
         
         System.out.println(goal);
 
-        CoordinatesXY current = reitti[goal.getY()][goal.getX()];
+        Coordinates current = reitti[goal.getY()][goal.getX()];
 
         while (true) {
             current = reitti[current.getY()][current.getX()];

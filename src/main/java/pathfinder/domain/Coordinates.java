@@ -9,12 +9,12 @@ package pathfinder.domain;
  *
  * @author johyry
  */
-public class CoordinatesXY {
+public class Coordinates {
 
     private int x;
     private int y;
 
-    public CoordinatesXY(int y, int x) {
+    public Coordinates(int y, int x) {
         this.x = x;
         this.y = y;
     }
