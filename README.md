@@ -10,3 +10,5 @@ Repository for school project on Data structures and Algorithms
 [Viikkoraportti 1](/Dokumentaatio/Viikkoraportti1.md)
 
 [Viikkoraportti 2](/Dokumentaatio/Viikkoraportti2.md)
+
+[Viikkoraportti 3](/Dokumentaatio/Viikkoraportti3.md)
