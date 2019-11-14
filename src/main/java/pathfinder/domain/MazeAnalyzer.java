@@ -29,7 +29,7 @@ public class MazeAnalyzer {
                 return new Coordinates(0, i);
             }
         }
-        return null;
+        return new Coordinates(-1, -1);
     }
 
     /**
@@ -45,6 +45,6 @@ public class MazeAnalyzer {
                 return new Coordinates(maze.length-1, i);
             }
         }
-        return null;
+        return new Coordinates(-1, -1);
     }
 }

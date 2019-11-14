@@ -10,6 +10,7 @@ import pathfinder.bitmapreader.BitmapReader;
 import pathfinder.domain.BreathFirstSearch;
 import pathfinder.domain.Coordinates;
 import pathfinder.domain.MazeAnalyzer;
+import pathfinder.domain.Thremaux;
 
 /**
  *
@@ -22,9 +23,9 @@ public class App {
 
         // initializes bitmapreader and calls the method readfileandarray to get array representing the bitmap
         // in the array 1 = path, 0 = wall
-        //BitmapReader bitmapreader = new BitmapReader("example1.bmp"); // koko 5x5
-        //BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 11x11
-        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001
+//        BitmapReader bitmapreader = new BitmapReader("example1.bmp"); // koko 5x5
+        BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 11x11
+//        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001
         // BitmapReader bitmapreader = new BitmapReader("example4.bmp");
 
         int[][] maze = bitmapreader.readFileAndReturnArray();
@@ -33,11 +34,14 @@ public class App {
         Coordinates start = analyzer.findStartCoordinates();
         Coordinates goal = analyzer.findGoalCoordinates();
         
-        System.out.println("Haetaan nopein reitti leveyshaulla: ");
+        System.out.println("Haetaan nopein reitti Thremauxilla: ");
+        
+        Thremaux thremaux = new Thremaux(maze, start, goal);
+        thremaux.search();
 
-        BreathFirstSearch leveyshaku = new BreathFirstSearch(maze, start, goal);
-        //printMaze(maze);
-        leveyshaku.init();
+//        BreathFirstSearch leveyshaku = new BreathFirstSearch(maze, start, goal);
+//        //printMaze(maze);
+//        leveyshaku.init();
         //printMaze(maze);
 //        System.out.println(leveyshaku.findStart());
 //        System.out.println(leveyshaku.findGoal());
