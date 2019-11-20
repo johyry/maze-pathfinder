@@ -19,25 +19,29 @@ import pathfinder.domain.Thremaux;
 public class App {
 
     public void run() throws IOException {
-        System.out.println("Tervetuloa labyrinttisoftaan!");
+        System.out.println("Tervetuloa labyrinttisoftaan! \n");
 
         // initializes bitmapreader and calls the method readfileandarray to get array representing the bitmap
         // in the array 1 = path, 0 = wall
 //        BitmapReader bitmapreader = new BitmapReader("example1.bmp"); // koko 5x5
 //        BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 11x11
-//        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001
-         BitmapReader bitmapreader = new BitmapReader("example4.bmp");
+        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001
+//         BitmapReader bitmapreader = new BitmapReader("example4.bmp");
+//         BitmapReader bitmapreader = new BitmapReader("example5.bmp"); // Koko 17x17
 
         int[][] maze = bitmapreader.readFileAndReturnArray();
-        
+
         MazeAnalyzer analyzer = new MazeAnalyzer(maze);
         Coordinates start = analyzer.findStartCoordinates();
         Coordinates goal = analyzer.findGoalCoordinates();
-        
+
         System.out.println("Haetaan nopein reitti Thremauxilla: ");
-        
+
         Thremaux thremaux = new Thremaux(maze, start, goal);
-        thremaux.search();
+        thremaux.init();
+
+        System.out.println("");
+        System.out.println("Haetaan nopein reitti Leveyshaulla: ");
 
         BreathFirstSearch leveyshaku = new BreathFirstSearch(maze, start, goal);
 //        //printMaze(maze);

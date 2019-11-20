@@ -39,5 +39,9 @@ public class Coordinates {
     public String toString() {
         return "y: " + y + ", x: " + x;
     }
+    
+    public boolean equals(Coordinates c) {
+        return x == c.getX() && y == c.getY();
+    }
 
 }

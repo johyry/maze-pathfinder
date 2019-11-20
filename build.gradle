@@ -3,9 +3,6 @@ apply plugin: 'jacoco'
 apply plugin: 'application'
 apply plugin: 'checkstyle'
 
-//plugins {
-//    id 'checkstyle'
-//}
 
 mainClassName = 'pathfinder.app.Main'
 

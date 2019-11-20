@@ -17,7 +17,7 @@ public class BreathFirstSearch {
     private int[][] maze;
     private Coordinates start;
     private Coordinates goal;
-    
+
     private Coordinates[][] reitti;
 
     public BreathFirstSearch(int[][] maze, Coordinates start, Coordinates goal) {
@@ -26,22 +26,22 @@ public class BreathFirstSearch {
         this.goal = goal;
 
     }
-    
+
     public void init() {
-        int pituus = search();
         System.out.println("Reitti löydetty.");
+        int pituus = search();
         System.out.println("Reitin pituus: " + pituus);
     }
 
     /**
-     * Suorittaa itse haun,
-     * palauttaa reitin pituuden testauksen helpottamiseksi
+     * Suorittaa itse haun, palauttaa reitin pituuden testauksen helpottamiseksi
      * laskee samalla reitin reitti taulukkoon
+     *
      * @return int reitin pituuden
      */
     public int search() {
         Queue<Coordinates> jono = new LinkedList<>();
-        
+
         int roundsDone = 0;
 
         jono.add(start);
@@ -55,7 +55,7 @@ public class BreathFirstSearch {
 
         while (!jono.isEmpty()) {
             roundsDone++;
-            
+
             Coordinates xy = jono.poll();
             int x = xy.getX();
             int y = xy.getY();
@@ -120,12 +120,10 @@ public class BreathFirstSearch {
 
         System.out.println("Rounds done leveyshaku: " + roundsDone);
         return etaisyys[goal.getY()][goal.getX()];
-}
-
-    
+    }
 
     public void printRoute(Coordinates[][] reitti) {
-        
+
         System.out.println(goal);
 
         Coordinates current = reitti[goal.getY()][goal.getX()];

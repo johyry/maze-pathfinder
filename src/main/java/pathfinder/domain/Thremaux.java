@@ -18,26 +18,44 @@ public class Thremaux {
     private Coordinates goal;
     public int[][] marked; // public for testing purposes
     private Coordinates[][] previousPoint;
+    private int roundsDoneWhileCalculating;
 
     public Thremaux(int[][] maze, Coordinates start, Coordinates goal) {
         this.maze = maze;
         this.start = start;
         this.goal = goal;
         this.marked = new int[maze.length][maze[0].length];
-        table2DInitZeros(marked);
+        table2DInitAsZeros(marked);
         this.previousPoint = new Coordinates[maze.length][maze[0].length];
-        
+
     }
 
     public void init() {
-        
+        int loytyiko = search();
+        if (loytyiko == 1) {
+            System.out.println("Reitti löytyi.");
+            System.out.println("Laskentakierroksia kertyi: " + roundsDoneWhileCalculating);
+            System.out.println("Reitin pituus: " + calculateLengthOfRoute());
+//            System.out.println("Print marks");
+//            printMarks();
+
+        }
     }
+    
+//    private void printMarks() {
+//        for (int y = 0; y < marked.length; y++) {
+//            for (int x = 0; x < marked[0].length; x++) {
+//                System.out.print(marked[y][x] + " ");
+//            }
+//            System.out.println();
+//        }
+//    }
 
     public int search() {
         // 1. Liiku Taulukossa DONE
         // 2. Merkkaa reitti aina kun liikut sillä DONE
         //     - Risteyksiä ei ikinä merkata
-        // 3. Tarkista, oletko maalissa NOT
+        // 3. Tarkista, oletko maalissa DONE
         // 4. Älä koskaan mene reitille jossa on kaksi merkkiä DONE
         // 5. Kun saavut risteykseen, jossa muita reittejä kun tuloreitti DONE
         //    ei ole merkitty, valitse satunnainen reitti 
@@ -48,40 +66,36 @@ public class Thremaux {
 
 //        Huomioita:
 //            - Pidä kirjaa mistä saavuit
-
         // Arvoksi tulee 1, jos reitti löytyi, ja 0, jos ei
         int foundRoute = -1;
-        
-        int calculationsDone = 0;
 
         // Aloituspiste
         Coordinates current = start;
         // Merkataan lähtö käydyksi
-        marked[start.getY()][start.getX()] = 1;
+        marked[start.getY()][start.getX()] = 0;
         // Lähdön edellinen piste on lähtö
         previousPoint[start.getY()][start.getX()] = start;
 
         while (true) {
             int x = current.getX();
             int y = current.getY();
-            
-            calculationsDone++;
-            
-//            System.out.println("Round: " + calculationsDone + " x: " + x + " y: " + y);
+
+            roundsDoneWhileCalculating++;
 
             // Tarkistetaan, ollaanko maalissa
-            if (x == goal.getX() && y == goal.getY()) {
+            if (current.equals(goal)) {
                 foundRoute = 1;
+                marked[y][x] = 1;
                 break;
             }
-            
+
             // Tarkistetaan, ollaanko palattu lähtöön, ja siellä on kaksi merkkiä
             // -> Labyrintistä ei ole reittiä ulos
             if (x == start.getX() && y == start.getY() && marked[start.getY()][start.getX()] == 2) {
                 foundRoute = 0;
                 break;
-            } 
-            
+            }
+
             // Edellinen piste
             Coordinates previous = previousPoint[y][x];
 
@@ -119,14 +133,84 @@ public class Thremaux {
                 Coordinates next = moveForward(junctionTable, current, previous);
                 previousPoint[next.getY()][next.getX()] = current;
                 // Merkitään piste, kun siitä lähdetään. Risteyksiä ei ikinä merkata.
-                marked[y][x] = marked[y][x]+1;
+                marked[y][x] = marked[y][x] + 1;
                 current = next;
             }
         }
-        
-        System.out.println("Rounds done: " + calculationsDone);
+
         return foundRoute;
 
+    }
+
+    /**
+     * Laskee löydetyn reitin pituuden seuraamalla pisteitä, missä on 1 merkki.
+     *
+     * @return seuraavan pisteen Coordinates -olio
+     */
+    public int calculateLengthOfRoute() {
+        Coordinates current = goal;
+        Coordinates previous = goal;
+        int lengthOfRoute = 0;
+
+        while (true) {
+            lengthOfRoute++;
+
+            int[] junctionTable = howManyRouteOptions(current, previous);
+
+            Coordinates next;
+            // Jos risteyksessä, niin haetaan ympärillä olevista se missä on yksi merkki
+            if (junctionTable[0] > 1) {
+                next = findRouteWithOneMark(current, previous);
+            } else { // Muuten jatketaan vaan tietä eteenpäin
+                next = moveForward(junctionTable, current, previous);
+            }
+            
+            previous = current;
+            current = next;
+
+            if (current.equals(start)) {
+                break;
+            }
+
+        }
+
+        return lengthOfRoute;
+    }
+
+    /**
+     * Apumetodi reitin pituuden löytämiselle Etsii risteyksessä seuraavan
+     * pisteen missä on 1 merkki
+     *
+     * @return seuraavan pisteen Coordinates -olio
+     */
+    public Coordinates findRouteWithOneMark(Coordinates current, Coordinates previous) {
+        int x = current.getX();
+        int y = current.getY();
+
+        // Ylös
+        if (y != 0) {
+            if (previous.getY() != y - 1 && marked[y - 1][x] == 1) {
+                return new Coordinates(y - 1, x);
+            }
+        }
+
+        // Oikea
+        if (previous.getX() != x + 1 && marked[y][x + 1] == 1) {
+            return new Coordinates(y, x + 1);
+        }
+
+        // Alas
+        if (y != maze.length - 1) {
+            if (previous.getY() != y + 1 && marked[y + 1][x] == 1) {
+                return new Coordinates(y + 1, x);
+            }
+        }
+
+        // Vasen
+        if (previous.getX() != x - 1 && marked[y][x - 1] == 1) {
+            return new Coordinates(y, x - 1);
+        }
+        return null;
     }
 
     /**
@@ -137,7 +221,7 @@ public class Thremaux {
     public Coordinates moveForward(int[] junctionTable, Coordinates current, Coordinates previous) {
         int x = current.getX();
         int y = current.getY();
-        
+
         if (junctionTable[1] == 1) {
             return new Coordinates(y - 1, x);
 
@@ -157,7 +241,7 @@ public class Thremaux {
             return new Coordinates(y, x - 1);
         }
         // Jos umpikujassa, umpikujaan laitetaan merkki
-        marked[y][x] = marked[y][x]+1;
+        marked[y][x] = marked[y][x] + 1;
         return previous;
     }
 
@@ -412,11 +496,15 @@ public class Thremaux {
         return table;
     }
 
-    private void table2DInitZeros(int[][] table) {
+    /**
+     * Initialisoi 2d taulukon kaikiksi arvoiksi nollan
+     */
+    private void table2DInitAsZeros(int[][] table) {
         for (int y = 0; y < table.length; y++) {
             for (int x = 0; x < table[0].length; x++) {
                 table[y][x] = 0;
             }
         }
     }
+
 }
