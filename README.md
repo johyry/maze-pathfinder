@@ -7,6 +7,8 @@ Repository for school project on Data structures and Algorithms
 
 [Määrittelydokumentti](/Dokumentaatio/Maarittelydokumentti.md)
 
+[Testausdokumentti](/Dokumentaatio/Testausdokumentti.md)
+
 [Viikkoraportti 1](/Dokumentaatio/Viikkoraportti1.md)
 
 [Viikkoraportti 2](/Dokumentaatio/Viikkoraportti2.md)

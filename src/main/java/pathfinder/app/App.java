@@ -9,6 +9,7 @@ import java.io.IOException;
 import pathfinder.bitmapreader.BitmapReader;
 import pathfinder.domain.BreathFirstSearch;
 import pathfinder.domain.Coordinates;
+import pathfinder.domain.LeftWallFollower;
 import pathfinder.domain.MazeAnalyzer;
 import pathfinder.domain.Thremaux;
 
@@ -23,11 +24,12 @@ public class App {
 
         // initializes bitmapreader and calls the method readfileandarray to get array representing the bitmap
         // in the array 1 = path, 0 = wall
-//        BitmapReader bitmapreader = new BitmapReader("example1.bmp"); // koko 5x5
-//        BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 11x11
-        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001
-//         BitmapReader bitmapreader = new BitmapReader("example4.bmp");
-//         BitmapReader bitmapreader = new BitmapReader("example5.bmp"); // Koko 17x17
+//        BitmapReader bitmapreader = new BitmapReader("example1.bmp"); // koko 5x5 TÄYDELLINEN
+//        BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 101x101 TÄYDELLINEN
+//        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001 TÄYDELLINEN
+//         BitmapReader bitmapreader = new BitmapReader("example4.bmp"); // 501x501 TÄYDELLINEN
+//         BitmapReader bitmapreader = new BitmapReader("example5.bmp"); // Koko 2501X2501 TÄYDELLINEN
+        BitmapReader bitmapreader = new BitmapReader("example6.bmp"); // Koko 5001x5001 TÄYDELLINEN
 
         int[][] maze = bitmapreader.readFileAndReturnArray();
 
@@ -35,20 +37,42 @@ public class App {
         Coordinates start = analyzer.findStartCoordinates();
         Coordinates goal = analyzer.findGoalCoordinates();
 
-        System.out.println("Haetaan nopein reitti Thremauxilla: ");
+        long summa1 = 0;
+        long summa2 = 0;
+        long summa3 = 0;
 
-        Thremaux thremaux = new Thremaux(maze, start, goal);
-        thremaux.init();
+        int kierroksia = 10;
+        
+        for (int i = 0; i < kierroksia; i++) {
+            LeftWallFollower lfw = new LeftWallFollower(maze, start, goal);
+            long time1 = System.currentTimeMillis();
+            lfw.init();
+            long time2 = System.currentTimeMillis();
+            summa1 += time2 - time1;
 
-        System.out.println("");
-        System.out.println("Haetaan nopein reitti Leveyshaulla: ");
+            System.out.println("");
 
-        BreathFirstSearch leveyshaku = new BreathFirstSearch(maze, start, goal);
-//        //printMaze(maze);
-        leveyshaku.init();
-        //printMaze(maze);
-//        System.out.println(leveyshaku.findStart());
-//        System.out.println(leveyshaku.findGoal());
+            Thremaux thremaux = new Thremaux(maze, start, goal);
+            long time3 = System.currentTimeMillis();
+            thremaux.init();
+            long time4 = System.currentTimeMillis();
+            summa2 += time4 - time3;
+            
+            System.out.println("");
+
+            BreathFirstSearch leveyshaku = new BreathFirstSearch(maze, start, goal);
+            long time5 = System.currentTimeMillis();
+            leveyshaku.init();
+            long time6 = System.currentTimeMillis();
+            summa3 += time6 - time5;
+            
+            System.out.println("");
+        }
+        
+        System.out.println("LFW keskiarvo " + kierroksia +  " hausta: " + summa1/kierroksia + " ms");
+                System.out.println("Thremauxin keskiarvo " + kierroksia +  " hausta: " + summa2/kierroksia + " ms");
+        System.out.println("BFS keskiarvo " + kierroksia +  " hausta: " + summa3/kierroksia + " ms");
+
 
     }
 

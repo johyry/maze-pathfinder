@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pathfinder.domain;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
+ *
+ * Leveyshaku reitinhakualgoritmi.
  *
  * @author johyry
  */
@@ -17,8 +14,8 @@ public class BreathFirstSearch {
     private int[][] maze;
     private Coordinates start;
     private Coordinates goal;
-
     private Coordinates[][] reitti;
+    private int foundRoute;
 
     public BreathFirstSearch(int[][] maze, Coordinates start, Coordinates goal) {
         this.maze = maze;
@@ -28,9 +25,15 @@ public class BreathFirstSearch {
     }
 
     public void init() {
-        System.out.println("Reitti löydetty.");
         int pituus = search();
-        System.out.println("Reitin pituus: " + pituus);
+        if (foundRoute == 1) {
+            System.out.println("Leveyshaku: ");
+            System.out.println("Reitti löydetty.");
+            System.out.println("Reitin pituus: " + pituus);
+        } else {
+            System.out.println("Reittiä ei löytynyt.");
+        }
+
     }
 
     /**
@@ -43,6 +46,7 @@ public class BreathFirstSearch {
         Queue<Coordinates> jono = new LinkedList<>();
 
         int roundsDone = 0;
+        this.foundRoute = 0;
 
         jono.add(start);
 
@@ -62,6 +66,7 @@ public class BreathFirstSearch {
 
             // Jos ollaan maalissa, lopeta looppaus
             if (y == goal.getY() && x == goal.getX()) {
+                foundRoute = 1;
                 break;
             }
 
@@ -122,6 +127,10 @@ public class BreathFirstSearch {
         return etaisyys[goal.getY()][goal.getX()];
     }
 
+    /**
+     * Printtaa haun löytämän reitin alusta loppuun koordinaatteina. Lähinnä
+     * debug tarkoituksiin.
+     */
     public void printRoute(Coordinates[][] reitti) {
 
         System.out.println(goal);
@@ -137,5 +146,7 @@ public class BreathFirstSearch {
             }
         }
     }
+    
+    
 
 }

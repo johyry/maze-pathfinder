@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pathfinder.domain;
 
 import java.util.Random;
 
 /**
  *
+ * Tremaux reitinhakualgoritmi. Toimintaperjaate alla haun yhteydessä.
+ * 
  * @author johyry
  */
 public class Thremaux {
@@ -32,7 +30,9 @@ public class Thremaux {
 
     public void init() {
         int loytyiko = search();
+        System.out.println("Thremaux: ");
         if (loytyiko == 1) {
+            
             System.out.println("Reitti löytyi.");
             System.out.println("Laskentakierroksia kertyi: " + roundsDoneWhileCalculating);
             System.out.println("Reitin pituus: " + calculateLengthOfRoute());
@@ -51,21 +51,25 @@ public class Thremaux {
 //        }
 //    }
 
+    /**
+     * Laskee löydetyn reitin pituuden seuraamalla pisteitä, missä on 1 merkki.
+     *
+     * @return seuraavan pisteen Coordinates -olio
+     */
     public int search() {
-        // 1. Liiku Taulukossa DONE
-        // 2. Merkkaa reitti aina kun liikut sillä DONE
+        // 1. Liiku Labyrintissä
+        // 2. Merkkaa reitti aina kun liikut sillä
         //     - Risteyksiä ei ikinä merkata
-        // 3. Tarkista, oletko maalissa DONE
-        // 4. Älä koskaan mene reitille jossa on kaksi merkkiä DONE
-        // 5. Kun saavut risteykseen, jossa muita reittejä kun tuloreitti DONE
+        // 3. Tarkista, oletko maalissa
+        // 4. Älä koskaan mene reitille jossa on kaksi merkkiä
+        // 5. Kun saavut risteykseen, jossa muita reittejä kun tuloreitti
         //    ei ole merkitty, valitse satunnainen reitti 
         // 6. Muuten:
-        //     - Jos reitillä josta saavuit on vain yksi merkki palaa sinne DONE
-        //     - Jos kaksi, valitse reitti jossa on vähiten merkkejä, DONE
+        //     - Jos reitillä josta saavuit on vain yksi merkki palaa sinne
+        //     - Jos kaksi, valitse reitti jossa on vähiten merkkejä,
         //       jos yhtä paljon, valitse satunnaisesti
 
-//        Huomioita:
-//            - Pidä kirjaa mistä saavuit
+
         // Arvoksi tulee 1, jos reitti löytyi, ja 0, jos ei
         int foundRoute = -1;
 
