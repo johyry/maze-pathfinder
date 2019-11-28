@@ -25,11 +25,13 @@ public class App {
 
         // initializes bitmapreader and calls the method readfileandarray to get array representing the bitmap
         // in the array 1 = path, 0 = wall
+        // Kun haluat suorittaa haun, valitse kyseisistä valmiiksi tuotetuista labyrinteistä joku ja kommentoi muut pois.
+        // Oikealla on koko ja labyrintin tyyppi. Kaikki ovat tällä hetkellä täydellisiä tyypiltään.
 //        BitmapReader bitmapreader = new BitmapReader("example1.bmp"); // koko 5x5 TÄYDELLINEN
 //        BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 101x101 TÄYDELLINEN
 //        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001 TÄYDELLINEN
 //         BitmapReader bitmapreader = new BitmapReader("example4.bmp"); // 501x501 TÄYDELLINEN
-         BitmapReader bitmapreader = new BitmapReader("example5.bmp"); // Koko 2501X2501 TÄYDELLINEN
+        BitmapReader bitmapreader = new BitmapReader("example5.bmp"); // Koko 2501X2501 TÄYDELLINEN
 //        BitmapReader bitmapreader = new BitmapReader("example6.bmp"); // Koko 5001x5001 TÄYDELLINEN
 
         int[][] maze = bitmapreader.readFileAndReturnArray();
@@ -43,37 +45,36 @@ public class App {
         long summa3 = 0;
 
         int kierroksia = 10;
-        
+
         for (int i = 0; i < kierroksia; i++) {
-//            LeftWallFollower lfw = new LeftWallFollower(maze, start, goal);
-//            long time1 = System.currentTimeMillis();
-//            lfw.init();
-//            long time2 = System.currentTimeMillis();
-//            summa1 += time2 - time1;
-//
-//            System.out.println("");
-//
-//            Thremaux thremaux = new Thremaux(maze, start, goal);
-//            long time3 = System.currentTimeMillis();
-//            thremaux.init();
-//            long time4 = System.currentTimeMillis();
-//            summa2 += time4 - time3;
-//            
-//            System.out.println("");
+            LeftWallFollower lfw = new LeftWallFollower(maze, start, goal);
+            long time1 = System.currentTimeMillis();
+            lfw.init();
+            long time2 = System.currentTimeMillis();
+            summa1 += time2 - time1;
+
+            System.out.println("");
+
+            Thremaux thremaux = new Thremaux(maze, start, goal);
+            long time3 = System.currentTimeMillis();
+            thremaux.init();
+            long time4 = System.currentTimeMillis();
+            summa2 += time4 - time3;
+
+            System.out.println("");
 
             BreathFirstSearch leveyshaku = new BreathFirstSearch(maze, start, goal);
             long time5 = System.currentTimeMillis();
             leveyshaku.init();
             long time6 = System.currentTimeMillis();
             summa3 += time6 - time5;
-            
+
             System.out.println("");
         }
-        
-//        System.out.println("LFW keskiarvo " + kierroksia +  " hausta: " + summa1/kierroksia + " ms");
-//                System.out.println("Thremauxin keskiarvo " + kierroksia +  " hausta: " + summa2/kierroksia + " ms");
-        System.out.println("BFS keskiarvo " + kierroksia +  " hausta: " + summa3/kierroksia + " ms");
 
+        System.out.println("LFW keskiarvo " + kierroksia + " hausta: " + summa1 / kierroksia + " ms");
+        System.out.println("Thremauxin keskiarvo " + kierroksia + " hausta: " + summa2 / kierroksia + " ms");
+        System.out.println("BFS keskiarvo " + kierroksia + " hausta: " + summa3 / kierroksia + " ms");
 
     }
 

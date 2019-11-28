@@ -52,9 +52,9 @@ public class Thremaux {
 //    }
 
     /**
-     * Laskee löydetyn reitin pituuden seuraamalla pisteitä, missä on 1 merkki.
+     * Suorittaa itse algoritmin, palauttaa 1 jos reitti löytyi ja -1 jos ei
      *
-     * @return seuraavan pisteen Coordinates -olio
+     * @return int 1 jos löytyi reitti ja -1 jos ei
      */
     public int search() {
         // 1. Liiku Labyrintissä

@@ -134,21 +134,21 @@ public class BreathFirstSearch {
      * Printtaa haun löytämän reitin alusta loppuun koordinaatteina. Lähinnä
      * debug tarkoituksiin.
      */
-    public void printRoute(Coordinates[][] reitti) {
-
-        System.out.println(goal);
-
-        Coordinates current = reitti[goal.getY()][goal.getX()];
-
-        while (true) {
-            current = reitti[current.getY()][current.getX()];
-            System.out.println(current);
-
-            if (current.getX() == start.getX() && current.getY() == start.getY()) {
-                break;
-            }
-        }
-    }
+//    public void printRoute(Coordinates[][] reitti) {
+//
+//        System.out.println(goal);
+//
+//        Coordinates current = reitti[goal.getY()][goal.getX()];
+//
+//        while (true) {
+//            current = reitti[current.getY()][current.getX()];
+//            System.out.println(current);
+//
+//            if (current.getX() == start.getX() && current.getY() == start.getY()) {
+//                break;
+//            }
+//        }
+//    }
     
     /**
      * Palauttaa reitin pituuden

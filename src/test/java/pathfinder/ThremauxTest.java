@@ -27,11 +27,11 @@ public class ThremauxTest {
     private int[][] mazeExample1 = {
         {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 1, 1, 1, 0, 1, 1, 1, 0, 0},
-        {0, 0, 0, 1, 1, 1, 0, 1, 0, 0},
+        {0, 0, 0, 1, 0, 1, 0, 1, 0, 0},
         {0, 1, 1, 1, 0, 0, 0, 1, 0, 0},
         {0, 1, 0, 0, 0, 1, 1, 1, 1, 0},
         {0, 1, 0, 1, 0, 1, 0, 0, 1, 0},
-        {0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
+        {0, 1, 0, 1, 0, 1, 0, 0, 1, 0},
         {0, 1, 1, 1, 0, 1, 1, 0, 1, 0},
         {0, 0, 0, 1, 1, 1, 0, 1, 1, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
@@ -52,10 +52,22 @@ public class ThremauxTest {
         assertEquals(1, thremaux.search());
     }
     
-//    @Test
-//    public void searchTest2() {
-//        assertEquals(1, thremaux1.search());
-//    }
+    @Test
+    public void searchTest2() {
+        assertEquals(1, thremaux1.search());
+    }
+    
+    @Test
+    public void calculateLengthOfRouteTest1() {
+        thremaux.search();
+        assertEquals(6, thremaux.calculateLengthOfRoute());
+    }
+    
+    @Test
+    public void calculateLengthOfRouteTest2() {
+        thremaux1.search();
+        assertEquals(28, thremaux1.calculateLengthOfRoute());
+    }
     
     @Test
     public void moveForwardTest1() {
