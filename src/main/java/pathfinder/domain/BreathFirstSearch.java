@@ -1,7 +1,8 @@
 package pathfinder.domain;
 
 import java.util.LinkedList;
-import java.util.Queue;
+//import java.util.Queue;
+import pathfinder.datastructures.Queue;
 
 /**
  *
@@ -36,14 +37,15 @@ public class BreathFirstSearch {
 
     }
 
-    /**
-     * Suorittaa itse haun, palauttaa reitin pituuden testauksen helpottamiseksi
-     * laskee samalla reitin reitti taulukkoon
-     *
-     * @return int reitin pituuden
-     */
+//    /**
+//     * Suorittaa itse haun, palauttaa reitin pituuden testauksen helpottamiseksi
+//     * laskee samalla reitin reitti taulukkoon
+//     *
+//     * @return int reitin pituuden
+//     */
     public int search() {
-        Queue<Coordinates> jono = new LinkedList<>();
+        Queue jono = new Queue();
+//        Queue<Coordinates> jono = new LinkedList<>();
 
         int roundsDone = 0;
         this.foundRoute = 0;
