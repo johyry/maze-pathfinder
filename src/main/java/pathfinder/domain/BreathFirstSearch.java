@@ -16,7 +16,7 @@ public class BreathFirstSearch {
     private Coordinates start;
     private Coordinates goal;
     private Coordinates[][] reitti;
-    private int foundRoute;
+    private int[][] etaisyys;
 
     public BreathFirstSearch(int[][] maze, Coordinates start, Coordinates goal) {
         this.maze = maze;
@@ -26,34 +26,35 @@ public class BreathFirstSearch {
     }
 
     public void init() {
-        int pituus = search();
+        int foundRoute = search();
         if (foundRoute == 1) {
             System.out.println("Leveyshaku: ");
             System.out.println("Reitti löydetty.");
-            System.out.println("Reitin pituus: " + pituus);
+            System.out.println("Reitin pituus: " + getRouteLength());
         } else {
             System.out.println("Reittiä ei löytynyt.");
         }
 
     }
 
-//    /**
-//     * Suorittaa itse haun, palauttaa reitin pituuden testauksen helpottamiseksi
-//     * laskee samalla reitin reitti taulukkoon
-//     *
-//     * @return int reitin pituuden
-//     */
+    /**
+     * Suorittaa itse haun, palauttaa 1, jos reitti löytyi, ja 0 jos ei
+     * 
+     * laskee samalla reitin reitti taulukkoon
+     *
+     * @return 1 jos löytyi, 0 jos ei
+     */
     public int search() {
         Queue jono = new Queue();
 //        Queue<Coordinates> jono = new LinkedList<>();
 
         int roundsDone = 0;
-        this.foundRoute = 0;
+        int foundRoute = 0;
 
         jono.add(start);
 
         int[][] vierailtu = new int[maze.length][maze[0].length];
-        int[][] etaisyys = new int[maze.length][maze[0].length];
+        etaisyys = new int[maze.length][maze[0].length];
         reitti = new Coordinates[maze.length][maze[0].length];
 
         etaisyys[0][start.getX()] = 0;
@@ -126,7 +127,7 @@ public class BreathFirstSearch {
         }
 
         System.out.println("Rounds done leveyshaku: " + roundsDone);
-        return etaisyys[goal.getY()][goal.getX()];
+        return foundRoute;
     }
 
     /**
@@ -147,6 +148,14 @@ public class BreathFirstSearch {
                 break;
             }
         }
+    }
+    
+    /**
+     * Palauttaa reitin pituuden
+     * @return -1, jos ei löytynyt ja muuten reitin pituuden
+     */
+    public int getRouteLength() {
+        return etaisyys[goal.getY()][goal.getX()];
     }
     
     
