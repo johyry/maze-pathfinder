@@ -30,16 +30,42 @@ public class LeftWallFollowerTest {
         {0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
     };
     private LeftWallFollower lwf;
+    private int[][] mazeExample2 = {
+        {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 0, 1, 1, 1, 0, 0},
+        {0, 0, 0, 1, 0, 1, 0, 1, 0, 0},
+        {0, 1, 1, 1, 0, 0, 0, 1, 0, 0},
+        {0, 1, 0, 0, 0, 1, 1, 1, 1, 0},
+        {0, 1, 0, 1, 0, 1, 0, 0, 1, 0},
+        {0, 1, 0, 1, 0, 1, 1, 0, 1, 0},
+        {0, 1, 1, 1, 0, 1, 1, 0, 1, 0},
+        {0, 0, 0, 1, 1, 1, 0, 1, 1, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+    };
+    private LeftWallFollower lwf2;
 
     @Before
     public void setup() {
         MazeAnalyzer analyzer = new MazeAnalyzer(mazeExample1);
         lwf = new LeftWallFollower(mazeExample1, analyzer.findStartCoordinates(), analyzer.findGoalCoordinates());
+        MazeAnalyzer analyzer2 = new MazeAnalyzer(mazeExample2);
+        lwf2 = new LeftWallFollower(mazeExample2, analyzer2.findStartCoordinates(), analyzer2.findGoalCoordinates());
     }
     
     @Test
-    public void searchTest() {
-        assertEquals(45, lwf.search());
+    public void roundsOfCalculationsTest() {
+        lwf.search();
+        assertEquals(45, lwf.getRoundsOfCalculations());
+    }
+    
+    @Test
+    public void foundRouteTest() {
+        assertEquals(1, lwf.init());
+    }
+    
+    @Test
+    public void foundRouteTest2() {
+        assertEquals(0, lwf2.init());
     }
 
 }

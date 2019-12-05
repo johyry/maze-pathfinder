@@ -28,10 +28,10 @@ public class App {
         // Kun haluat suorittaa haun, valitse kyseisistä valmiiksi tuotetuista labyrinteistä joku ja kommentoi muut pois.
         // Oikealla on koko ja labyrintin tyyppi. Kaikki ovat tällä hetkellä täydellisiä tyypiltään.
 //        BitmapReader bitmapreader = new BitmapReader("example1.bmp"); // koko 5x5 TÄYDELLINEN
-//        BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 101x101 TÄYDELLINEN
+        BitmapReader bitmapreader = new BitmapReader("example2.bmp"); // koko 101x101 TÄYDELLINEN
 //        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001 TÄYDELLINEN
 //         BitmapReader bitmapreader = new BitmapReader("example4.bmp"); // 501x501 TÄYDELLINEN
-        BitmapReader bitmapreader = new BitmapReader("example5.bmp"); // Koko 2501X2501 TÄYDELLINEN
+//        BitmapReader bitmapreader = new BitmapReader("example5.bmp"); // Koko 2501X2501 TÄYDELLINEN
 //        BitmapReader bitmapreader = new BitmapReader("example6.bmp"); // Koko 5001x5001 TÄYDELLINEN
 
         int[][] maze = bitmapreader.readFileAndReturnArray();
@@ -47,9 +47,15 @@ public class App {
         int kierroksia = 10;
 
         for (int i = 0; i < kierroksia; i++) {
+            
             LeftWallFollower lfw = new LeftWallFollower(maze, start, goal);
             long time1 = System.currentTimeMillis();
-            lfw.init();
+            if (lfw.init() == 1) {
+                System.out.println("LFW found route");
+                System.out.println("Rounds of calculations done: " + lfw.getRoundsOfCalculations());
+            } else {
+                System.out.println("LFW didnt find route");
+            }
             long time2 = System.currentTimeMillis();
             summa1 += time2 - time1;
 
@@ -57,7 +63,13 @@ public class App {
 
             Thremaux thremaux = new Thremaux(maze, start, goal);
             long time3 = System.currentTimeMillis();
-            thremaux.init();
+            if (thremaux.init() == 1) {
+                System.out.println("Thremaux found route");
+                System.out.println("Rounds of calculations done: " + thremaux.getRoundsOfCalculations());
+                System.out.println("Length of route: " + thremaux.getRouteLength());
+            } else {
+                System.out.println("Thremaux didnt find route");
+            }
             long time4 = System.currentTimeMillis();
             summa2 += time4 - time3;
 
@@ -65,7 +77,13 @@ public class App {
 
             BreathFirstSearch leveyshaku = new BreathFirstSearch(maze, start, goal);
             long time5 = System.currentTimeMillis();
-            leveyshaku.init();
+            if (leveyshaku.init() == 1) {
+                System.out.println("BFS found route");
+                System.out.println("Rounds of calculations done: " + leveyshaku.getRoundsOfCalculations());
+                System.out.println("Length of route: " + leveyshaku.getRouteLength());
+            } else {
+                System.out.println("BFS didnt find route");
+            }
             long time6 = System.currentTimeMillis();
             summa3 += time6 - time5;
 

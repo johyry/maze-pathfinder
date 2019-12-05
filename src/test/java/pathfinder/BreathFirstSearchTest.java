@@ -55,6 +55,12 @@ public class BreathFirstSearchTest {
         MazeAnalyzer analyzer2 = new MazeAnalyzer(mazeExample2);
         bfs2 = new BreathFirstSearch(mazeExample2, analyzer2.findStartCoordinates(), analyzer2.findGoalCoordinates());
     }
+    
+    @Test
+    public void roundsOfCalculationsTest() {
+        bfs.search();
+        assertEquals(8, bfs.getRoundsOfCalculations());
+    }
 
     @Test
     public void searchTest() {

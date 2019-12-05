@@ -36,8 +36,15 @@ public class ThremauxTest {
         {0, 0, 0, 1, 1, 1, 0, 1, 1, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
     };
+    private int[][] mazeExample2 = {
+        {0, 0, 0, 1, 0},
+        {0, 1, 1, 1, 0},
+        {0, 1, 0, 0, 0},
+        {0, 1, 0, 0, 0},
+        {0, 1, 0, 0, 0}};
     private Thremaux thremaux;
     private Thremaux thremaux1;
+    private Thremaux thremaux2;
 
     @Before
     public void setup() {
@@ -45,6 +52,14 @@ public class ThremauxTest {
         thremaux = new Thremaux(mazeExample, analyzer.findStartCoordinates(), analyzer.findGoalCoordinates());
         MazeAnalyzer analyzer1 = new MazeAnalyzer(mazeExample1);
         thremaux1 = new Thremaux(mazeExample1, analyzer1.findStartCoordinates(), analyzer1.findGoalCoordinates());
+        MazeAnalyzer analyzer2 = new MazeAnalyzer(mazeExample2);
+        thremaux2 = new Thremaux(mazeExample2, analyzer2.findStartCoordinates(), analyzer2.findGoalCoordinates());
+    }
+    
+    @Test
+    public void roundsOfCalculationsTest() {
+        thremaux2.search();
+        assertEquals(7, thremaux2.getRoundsOfCalculations());
     }
     
     @Test
@@ -60,13 +75,13 @@ public class ThremauxTest {
     @Test
     public void calculateLengthOfRouteTest1() {
         thremaux.search();
-        assertEquals(6, thremaux.calculateLengthOfRoute());
+        assertEquals(6, thremaux.getRouteLength());
     }
     
     @Test
     public void calculateLengthOfRouteTest2() {
         thremaux1.search();
-        assertEquals(28, thremaux1.calculateLengthOfRoute());
+        assertEquals(28, thremaux1.getRouteLength());
     }
     
     @Test

@@ -13,6 +13,8 @@ public class LeftWallFollower {
     private int[][] maze;
     private Coordinates start;
     private Coordinates goal;
+    private int roundsOfCalculations;
+    
 
     public LeftWallFollower(int[][] maze, Coordinates start, Coordinates goal) {
         this.maze = maze;
@@ -20,9 +22,9 @@ public class LeftWallFollower {
         this.goal = goal;
     }
 
-    public void init() {
-        System.out.println("LFW: ");
-        System.out.println("Reitti löytyi, laskentakierroksia kertyi: " + search());
+    public int init() {
+        return search();
+        
     }
     
     /**
@@ -34,12 +36,18 @@ public class LeftWallFollower {
         Coordinates current = start;
         Coordinates previous = start;
 
-        int roundsOfCalculationsDone = 0;
+        roundsOfCalculations = 0;
+        int foundRoute = 0;
 
         while (true) {
-            roundsOfCalculationsDone++;
+            roundsOfCalculations++;
 
             if (current.equals(goal)) {
+                foundRoute = 1;
+                break;
+            }
+            
+            if (current.equals(start) && roundsOfCalculations > 1) {
                 break;
             }
 
@@ -49,7 +57,7 @@ public class LeftWallFollower {
 
         }
 
-        return roundsOfCalculationsDone;
+        return foundRoute;
     }
 
     /**
@@ -100,21 +108,21 @@ public class LeftWallFollower {
         int x = current.getX();
 
         // Oikea
-        if (previous.getX() != x + 1 && maze[y][x + 1] == 1) {
+        if (maze[y][x + 1] == 1) {
             return new Coordinates(y, x + 1);
 
         }
 
         // Alas
         if (y != maze.length - 1) {
-            if (previous.getY() != y + 1 && maze[y + 1][x] == 1) {
+            if (maze[y + 1][x] == 1) {
                 return new Coordinates(y + 1, x);
 
             }
         }
 
         // Vasen
-        if (previous.getX() != x - 1 && maze[y][x - 1] == 1) {
+        if (maze[y][x - 1] == 1) {
             return new Coordinates(y, x - 1);
         }
 
@@ -128,7 +136,7 @@ public class LeftWallFollower {
 
         // Alas
         if (y != maze.length - 1) {
-            if (previous.getY() != y + 1 && maze[y + 1][x] == 1) {
+            if (maze[y + 1][x] == 1) {
                 return new Coordinates(y + 1, x);
 
             }
@@ -156,20 +164,20 @@ public class LeftWallFollower {
         int x = current.getX();
 
         // Vasen
-        if (previous.getX() != x - 1 && maze[y][x - 1] == 1) {
+        if (maze[y][x - 1] == 1) {
             return new Coordinates(y, x - 1);
         }
 
         // Ylös
         if (y != 0) {
-            if (previous.getY() != y - 1 && maze[y - 1][x] == 1) {
+            if (maze[y - 1][x] == 1) {
                 return new Coordinates(y - 1, x);
 
             }
         }
 
         // Oikea
-        if (previous.getX() != x + 1 && maze[y][x + 1] == 1) {
+        if (maze[y][x + 1] == 1) {
             return new Coordinates(y, x + 1);
 
         }
@@ -184,21 +192,21 @@ public class LeftWallFollower {
 
         // Ylös
         if (y != 0) {
-            if (previous.getY() != y - 1 && maze[y - 1][x] == 1) {
+            if (maze[y - 1][x] == 1) {
                 return new Coordinates(y - 1, x);
 
             }
         }
 
         // Oikea
-        if (previous.getX() != x + 1 && maze[y][x + 1] == 1) {
+        if (maze[y][x + 1] == 1) {
             return new Coordinates(y, x + 1);
 
         }
 
         // Alas
         if (y != maze.length - 1) {
-            if (previous.getY() != y + 1 && maze[y + 1][x] == 1) {
+            if (maze[y + 1][x] == 1) {
                 return new Coordinates(y + 1, x);
 
             }
@@ -207,5 +215,11 @@ public class LeftWallFollower {
         // Jos umpikuja, palautetaan edellinen
         return previous;
     }
+
+    public int getRoundsOfCalculations() {
+        return roundsOfCalculations;
+    }
+    
+    
 
 }

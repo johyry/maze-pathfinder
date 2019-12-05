@@ -16,7 +16,7 @@ public class Thremaux {
     private Coordinates goal;
     public int[][] marked; // public for testing purposes
     private Coordinates[][] previousPoint;
-    private int roundsDoneWhileCalculating;
+    private int roundsOfCalculations;
 
     public Thremaux(int[][] maze, Coordinates start, Coordinates goal) {
         this.maze = maze;
@@ -28,18 +28,8 @@ public class Thremaux {
 
     }
 
-    public void init() {
-        int loytyiko = search();
-        System.out.println("Thremaux: ");
-        if (loytyiko == 1) {
-            
-            System.out.println("Reitti löytyi.");
-            System.out.println("Laskentakierroksia kertyi: " + roundsDoneWhileCalculating);
-            System.out.println("Reitin pituus: " + calculateLengthOfRoute());
-//            System.out.println("Print marks");
-//            printMarks();
-
-        }
+    public int init() {
+        return search();
     }
     
 //    private void printMarks() {
@@ -84,7 +74,7 @@ public class Thremaux {
             int x = current.getX();
             int y = current.getY();
 
-            roundsDoneWhileCalculating++;
+            roundsOfCalculations++;
 
             // Tarkistetaan, ollaanko maalissa
             if (current.equals(goal)) {
@@ -151,7 +141,7 @@ public class Thremaux {
      *
      * @return seuraavan pisteen Coordinates -olio
      */
-    public int calculateLengthOfRoute() {
+    public int getRouteLength() {
         Coordinates current = goal;
         Coordinates previous = goal;
         int lengthOfRoute = 0;
@@ -510,5 +500,11 @@ public class Thremaux {
             }
         }
     }
+
+    public int getRoundsOfCalculations() {
+        return roundsOfCalculations;
+    }
+    
+    
 
 }
