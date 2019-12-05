@@ -26,19 +26,19 @@ Käytetyt algoritmit ja pseudokoodit:
 
 (Löytää nopeimman reitin vain täydellisissä labyrinteissä)
 
-Liiku labyrintissä
-Merkkaa reitti aina kun liikut siellä (risteyksiä ei merkata)
-Tarkista oletko maalissa
-Älä koskaan mene reitille, joss on kaksi merkkiä
-Kun saavut risteykseen, jossa muita reittejä kun tuloreitti ei ole merkitty, valitse 		satunnainen reitti
-Muuten:
+- Liiku labyrintissä
+- Merkkaa reitti aina kun liikut siellä (risteyksiä ei merkata)
+- Tarkista oletko maalissa
+- Älä koskaan mene reitille, joss on kaksi merkkiä
+- Kun saavut risteykseen, jossa muita reittejä kun tuloreitti ei ole merkitty, valitse satunnainen reitti
+- Muuten:
 	- Jos reitillä josta saavuit on vain yksi merkki, palaa sinne
 	- Jos kaksi, valitse reitti joss on vähiten merkkejä, jos yhtä paljon valitse 		   satunnaisesti
 
 **LeftWallFollower**
 
-Liiku labyrintissä pitäen vasen käsi seinässä.
-Löytää reitin ulos vain täydellisissä labyrinteissä.
+- Liiku labyrintissä pitäen vasen käsi seinässä.
+- Löytää reitin ulos vain täydellisissä labyrinteissä.
 
 
 <h3> Saavutetut aika- ja tilavaativuudet </h3>

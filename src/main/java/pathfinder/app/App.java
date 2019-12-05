@@ -27,12 +27,12 @@ public class App {
         // in the array 1 = path, 0 = wall
         // Kun haluat suorittaa haun, valitse kyseisistä valmiiksi tuotetuista labyrinteistä joku ja kommentoi muut pois.
         // Oikealla on koko ja labyrintin tyyppi. Kaikki ovat tällä hetkellä täydellisiä tyypiltään.
-//        BitmapReader bitmapreader = new BitmapReader("/mazes/example1.bmp"); // koko 5x5 TÄYDELLINEN
+//        BitmapReader bitmapreader = new BitmapReader("mazes/example1.bmp"); // koko 5x5 TÄYDELLINEN
         BitmapReader bitmapreader = new BitmapReader("mazes/example2.bmp"); // koko 101x101 TÄYDELLINEN
-//        BitmapReader bitmapreader = new BitmapReader("example3.bmp"); // koko 1001x1001 TÄYDELLINEN
-//         BitmapReader bitmapreader = new BitmapReader("example4.bmp"); // 501x501 TÄYDELLINEN
-//        BitmapReader bitmapreader = new BitmapReader("example5.bmp"); // Koko 2501X2501 TÄYDELLINEN
-//        BitmapReader bitmapreader = new BitmapReader("example6.bmp"); // Koko 5001x5001 TÄYDELLINEN
+//        BitmapReader bitmapreader = new BitmapReader("mazes/example3.bmp"); // koko 1001x1001 TÄYDELLINEN
+//         BitmapReader bitmapreader = new BitmapReader("mazes/example4.bmp"); // 501x501 TÄYDELLINEN
+//        BitmapReader bitmapreader = new BitmapReader("mazes/example5.bmp"); // Koko 2501X2501 TÄYDELLINEN
+//        BitmapReader bitmapreader = new BitmapReader("mazes/example6.bmp"); // Koko 5001x5001 TÄYDELLINEN
 
         int[][] maze = bitmapreader.readFileAndReturnArray();
 

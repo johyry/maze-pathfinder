@@ -55,35 +55,35 @@ public class ThremauxTest {
         MazeAnalyzer analyzer2 = new MazeAnalyzer(mazeExample2);
         thremaux2 = new Thremaux(mazeExample2, analyzer2.findStartCoordinates(), analyzer2.findGoalCoordinates());
     }
-    
+
     @Test
     public void roundsOfCalculationsTest() {
         thremaux2.search();
         assertEquals(7, thremaux2.getRoundsOfCalculations());
     }
-    
+
     @Test
     public void searchTest1() {
-        assertEquals(1, thremaux.search());
+        assertEquals(1, thremaux.init());
     }
-    
+
     @Test
     public void searchTest2() {
-        assertEquals(1, thremaux1.search());
+        assertEquals(1, thremaux1.init());
     }
-    
+
     @Test
     public void calculateLengthOfRouteTest1() {
         thremaux.search();
         assertEquals(6, thremaux.getRouteLength());
     }
-    
+
     @Test
     public void calculateLengthOfRouteTest2() {
         thremaux1.search();
         assertEquals(28, thremaux1.getRouteLength());
     }
-    
+
     @Test
     public void moveForwardTest1() {
         Coordinates current = new Coordinates(2, 3);
@@ -97,7 +97,7 @@ public class ThremauxTest {
         assertEquals(1, next.getY());
         assertEquals(3, next.getX());
     }
-    
+
     @Test
     public void moveForwardTest2() {
         Coordinates current = new Coordinates(1, 1);
@@ -111,7 +111,7 @@ public class ThremauxTest {
         assertEquals(2, next.getY());
         assertEquals(1, next.getX());
     }
-    
+
     @Test
     public void moveForwardTest3() {
         Coordinates current = new Coordinates(1, 2);
@@ -125,7 +125,7 @@ public class ThremauxTest {
         assertEquals(1, next.getY());
         assertEquals(1, next.getX());
     }
-    
+
     @Test
     public void moveForwardTest4() {
         Coordinates current = new Coordinates(1, 1);
@@ -139,7 +139,6 @@ public class ThremauxTest {
         assertEquals(1, next.getY());
         assertEquals(2, next.getX());
     }
-    
 
     @Test
     public void chooseOptionWithLowestMarksTest1() {
@@ -174,7 +173,7 @@ public class ThremauxTest {
         assertEquals(1, next.getY());
         assertEquals(2, next.getX());
     }
-    
+
 //    @Test
 //    public void chooseOptionWithLowestMarksTest3() {
 //        Coordinates current = new Coordinates(1, 3);
@@ -191,7 +190,6 @@ public class ThremauxTest {
 //        assertEquals(1, next.getY());
 //        assertEquals(2, next.getX());
 //    }
-
     @Test
     public void chooseRandomRouteTest1() {
         Coordinates current = new Coordinates(1, 3);

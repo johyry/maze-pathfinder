@@ -69,10 +69,14 @@ public class Thremaux {
         marked[start.getY()][start.getX()] = 0;
         // Lähdön edellinen piste on lähtö
         previousPoint[start.getY()][start.getX()] = start;
+        
+        System.out.println("start: " + start.getX() + " " + start.getY());
 
         while (true) {
             int x = current.getX();
             int y = current.getY();
+            
+            System.out.println("x: " + x + " y: " + y);
 
             roundsOfCalculations++;
 
