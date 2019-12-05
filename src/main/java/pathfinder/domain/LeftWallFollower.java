@@ -1,11 +1,10 @@
-
 package pathfinder.domain;
 
 /**
  *
- * Algoritmi joka etsii reittiä ulos labyrintistä pitämällä aina
- * vasemman käden seinässä. Löytää reitin ulos vain täydellisistä labyrinteistä.
- * 
+ * Algoritmi joka etsii reittiä ulos labyrintistä pitämällä aina vasemman käden
+ * seinässä. Löytää reitin ulos vain täydellisistä labyrinteistä.
+ *
  * @author johyry
  */
 public class LeftWallFollower {
@@ -14,7 +13,6 @@ public class LeftWallFollower {
     private Coordinates start;
     private Coordinates goal;
     private int roundsOfCalculations;
-    
 
     public LeftWallFollower(int[][] maze, Coordinates start, Coordinates goal) {
         this.maze = maze;
@@ -24,9 +22,9 @@ public class LeftWallFollower {
 
     public int init() {
         return search();
-        
+
     }
-    
+
     /**
      * Suorittaa itse haun. Palauttaa laskukierrosten määrän.
      *
@@ -46,7 +44,7 @@ public class LeftWallFollower {
                 foundRoute = 1;
                 break;
             }
-            
+
             if (current.equals(start) && roundsOfCalculations > 1) {
                 break;
             }
@@ -219,7 +217,5 @@ public class LeftWallFollower {
     public int getRoundsOfCalculations() {
         return roundsOfCalculations;
     }
-    
-    
 
 }
