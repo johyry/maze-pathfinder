@@ -5,7 +5,6 @@
  */
 package pathfinder.app;
 
-import java.io.IOException;
 import java.util.Scanner;
 import pathfinder.bitmaphandler.BitmapHandler;
 import pathfinder.domain.BreathFirstSearch;
@@ -13,7 +12,6 @@ import pathfinder.domain.Coordinates;
 import pathfinder.domain.LeftWallFollower;
 import pathfinder.domain.MazeAnalyzer;
 import pathfinder.domain.Thremaux;
-import pathfinder.datastructures.Queue;
 
 /**
  *
