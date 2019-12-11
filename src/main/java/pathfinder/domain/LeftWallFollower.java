@@ -13,11 +13,14 @@ public class LeftWallFollower {
     private Coordinates start;
     private Coordinates goal;
     private int roundsOfCalculations;
+    private int[][] marked;
 
     public LeftWallFollower(int[][] maze, Coordinates start, Coordinates goal) {
         this.maze = maze;
         this.start = start;
         this.goal = goal;
+        marked = new int[maze.length][maze[0].length];
+        table2DInitAsZeros(marked);
     }
 
     public int init() {
@@ -48,6 +51,8 @@ public class LeftWallFollower {
             if (current.equals(start) && roundsOfCalculations > 1) {
                 break;
             }
+            
+            marked[current.getY()][current.getX()]++;
 
             Coordinates next = followLeftWall(current, previous);
             previous = current;
@@ -213,9 +218,23 @@ public class LeftWallFollower {
         // Jos umpikuja, palautetaan edellinen
         return previous;
     }
+    
+    private void table2DInitAsZeros(int[][] table) {
+        for (int y = 0; y < table.length; y++) {
+            for (int x = 0; x < table[0].length; x++) {
+                table[y][x] = 0;
+            }
+        }
+    }
 
     public int getRoundsOfCalculations() {
         return roundsOfCalculations;
     }
+
+    public int[][] getMarked() {
+        return marked;
+    }
+    
+    
 
 }

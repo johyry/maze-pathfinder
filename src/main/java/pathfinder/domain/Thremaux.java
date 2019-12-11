@@ -32,14 +32,14 @@ public class Thremaux {
         return search();
     }
     
-//    private void printMarks() {
-//        for (int y = 0; y < marked.length; y++) {
-//            for (int x = 0; x < marked[0].length; x++) {
-//                System.out.print(marked[y][x] + " ");
-//            }
-//            System.out.println();
-//        }
-//    }
+    public void printMarks() {
+        for (int y = 0; y < marked.length; y++) {
+            for (int x = 0; x < marked[0].length; x++) {
+                System.out.print(marked[y][x] + " ");
+            }
+            System.out.println();
+        }
+    }
 
     /**
      * Suorittaa itse algoritmin, palauttaa 1 jos reitti löytyi ja -1 jos ei
@@ -70,14 +70,10 @@ public class Thremaux {
         // Lähdön edellinen piste on lähtö
         previousPoint[start.getY()][start.getX()] = start;
         
-        System.out.println("start: " + start.getX() + " " + start.getY());
-
         while (true) {
             int x = current.getX();
             int y = current.getY();
             
-            System.out.println("x: " + x + " y: " + y);
-
             roundsOfCalculations++;
 
             // Tarkistetaan, ollaanko maalissa
@@ -507,6 +503,10 @@ public class Thremaux {
 
     public int getRoundsOfCalculations() {
         return roundsOfCalculations;
+    }
+
+    public int[][] getMarked() {
+        return marked;
     }
     
     

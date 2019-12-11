@@ -33,7 +33,7 @@ public class BreathFirstSearch {
 
     /**
      * Suorittaa itse haun, palauttaa 1, jos reitti löytyi, ja 0 jos ei
-     * 
+     *
      * laskee samalla reitin reitti taulukkoon
      *
      * @return 1 jos löytyi, 0 jos ei
@@ -123,27 +123,41 @@ public class BreathFirstSearch {
     }
 
     /**
-     * Printtaa haun löytämän reitin alusta loppuun koordinaatteina. Lähinnä
-     * debug tarkoituksiin.
+     * Palauttaa löydetyn reitin int[][] taulukkona. Reitti merkattu ykkösinä
+     *
+     * @return int[][] taulukko
      */
-//    public void printRoute(Coordinates[][] reitti) {
-//
-//        System.out.println(goal);
-//
-//        Coordinates current = reitti[goal.getY()][goal.getX()];
-//
-//        while (true) {
-//            current = reitti[current.getY()][current.getX()];
-//            System.out.println(current);
-//
-//            if (current.getX() == start.getX() && current.getY() == start.getY()) {
-//                break;
-//            }
-//        }
-//    }
-    
+    public int[][] getFoundRoute() {
+        int[][] foundRoute = new int[maze.length][maze[0].length];
+        table2DInitAsZeros(foundRoute);
+
+        foundRoute[goal.getY()][goal.getX()] = 1;
+
+        Coordinates current = reitti[goal.getY()][goal.getX()];
+
+        while (true) {
+            current = reitti[current.getY()][current.getX()];
+            foundRoute[current.getY()][current.getX()] = 1;
+
+            if (current.getX() == start.getX() && current.getY() == start.getY()) {
+                break;
+            }
+        }
+
+        return foundRoute;
+    }
+
+    private void table2DInitAsZeros(int[][] table) {
+        for (int y = 0; y < table.length; y++) {
+            for (int x = 0; x < table[0].length; x++) {
+                table[y][x] = 0;
+            }
+        }
+    }
+
     /**
      * Palauttaa reitin pituuden
+     *
      * @return -1, jos ei löytynyt ja muuten reitin pituuden
      */
     public int getRouteLength() {
@@ -153,7 +167,5 @@ public class BreathFirstSearch {
     public int getRoundsOfCalculations() {
         return roundsOfCalculations;
     }
-    
-    
 
 }

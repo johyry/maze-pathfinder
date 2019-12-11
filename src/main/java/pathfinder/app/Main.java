@@ -6,6 +6,7 @@
 package pathfinder.app;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
@@ -15,14 +16,9 @@ public class Main {
 
     public static void main(String[] args) {
         App application = new App();
-        try {
-            application.run();
-        } catch (IOException exception) {
-            System.out.println(exception);
-        }
-        
-        //File file = new File("example1.bmp");
-        
+        Scanner lukija = new Scanner(System.in);
+        application.run(lukija);
+
     }
 
 }
