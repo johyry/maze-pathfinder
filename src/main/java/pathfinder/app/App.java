@@ -98,7 +98,7 @@ public class App {
         int thmxShortest = 0;
         int bfsShortest = 0;
 
-        int kierroksia = 100;
+        int kierroksia = 10;
 
         for (int i = 0; i < kierroksia; i++) {
 
