@@ -174,22 +174,6 @@ public class ThremauxTest {
         assertEquals(2, next.getX());
     }
 
-//    @Test
-//    public void chooseOptionWithLowestMarksTest3() {
-//        Coordinates current = new Coordinates(1, 3);
-//        int[] junctionTable = new int[5];
-//        junctionTable[1] = 1;
-//        junctionTable[2] = 0;
-//        junctionTable[3] = 1;
-//        junctionTable[4] = 1;
-//        thremaux.marked[0][3] = 1;
-//        thremaux.marked[2][3] = 1;
-//        thremaux.marked[1][2] = 1;
-//
-//        Coordinates next = thremaux.chooseOptionWithLowestMarks(junctionTable, current);
-//        assertEquals(1, next.getY());
-//        assertEquals(2, next.getX());
-//    }
     @Test
     public void chooseRandomRouteTest1() {
         Coordinates current = new Coordinates(1, 3);
@@ -263,6 +247,18 @@ public class ThremauxTest {
         assertEquals(1, risteyksia[3]);
         assertEquals(0, risteyksia[4]);
 
+    }
+    
+    @Test
+    public void printMarksTest1() {
+        thremaux2.init();
+        int[][] marked = {
+            {0, 0, 0, 1, 0},
+            {0, 1, 1, 1, 0},
+            {0, 1, 0, 0, 0},
+            {0, 1, 0, 0, 0},
+            {0, 1, 0, 0, 0}};
+        assertEquals(marked, thremaux2.getMarked());
     }
 
 }

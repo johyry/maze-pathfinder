@@ -136,10 +136,11 @@ public class BreathFirstSearch {
         Coordinates current = reitti[goal.getY()][goal.getX()];
 
         while (true) {
-            current = reitti[current.getY()][current.getX()];
             foundRoute[current.getY()][current.getX()] = 1;
+            current = reitti[current.getY()][current.getX()];
 
             if (current.getX() == start.getX() && current.getY() == start.getY()) {
+                foundRoute[current.getY()][current.getX()] = 1;
                 break;
             }
         }

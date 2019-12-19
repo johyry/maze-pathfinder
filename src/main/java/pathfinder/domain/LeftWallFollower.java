@@ -44,6 +44,7 @@ public class LeftWallFollower {
             roundsOfCalculations++;
 
             if (current.equals(goal)) {
+                marked[current.getY()][current.getX()]++;
                 foundRoute = 1;
                 break;
             }

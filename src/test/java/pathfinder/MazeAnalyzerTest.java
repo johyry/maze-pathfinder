@@ -16,12 +16,26 @@ import static org.junit.Assert.assertEquals;
  */
 public class MazeAnalyzerTest {
 
-    private int[][] mazeExample = {{0, 0, 0, 1, 0}, {0, 1, 1, 1, 0}, {0, 1, 0, 1, 0}, {0, 1, 0, 0, 0}, {0, 1, 0, 0, 0}};
+    private int[][] mazeExample = {
+        {0, 0, 0, 1, 0},
+        {0, 1, 1, 1, 0},
+        {0, 1, 0, 1, 0},
+        {0, 1, 0, 0, 0},
+        {0, 1, 0, 0, 0}};
     private MazeAnalyzer analyzer;
+    private int[][] mazeExample1 = {
+        {0, 0, 0, 0, 0},
+        {0, 1, 1, 1, 0},
+        {0, 1, 0, 1, 0},
+        {0, 1, 0, 0, 0},
+        {0, 0, 0, 0, 0}};
+    private MazeAnalyzer analyzer1;
 
     @Before
     public void setup() {
         analyzer = new MazeAnalyzer(mazeExample);
+        analyzer1 = new MazeAnalyzer(mazeExample1);
+
     }
 
     @Test
@@ -34,7 +48,20 @@ public class MazeAnalyzerTest {
     @Test
     public void findGoalCoordinatesTest() {
         assertEquals(1, analyzer.findGoalCoordinates().getX());
-        assertEquals(mazeExample.length-1, analyzer.findGoalCoordinates().getY());
+        assertEquals(mazeExample.length - 1, analyzer.findGoalCoordinates().getY());
+    }
+    
+    @Test
+    public void findStartCoordinatesTest1() {
+        assertEquals(-1, analyzer1.findStartCoordinates().getX());
+        assertEquals(-1, analyzer1.findStartCoordinates().getY());
+
+    }
+
+    @Test
+    public void findGoalCoordinatesTest1() {
+        assertEquals(-1, analyzer1.findGoalCoordinates().getX());
+        assertEquals(-1, analyzer1.findGoalCoordinates().getY());
     }
 
 }

@@ -23,6 +23,30 @@ public class QueueTest {
     public void setup() {
         jono = new Queue();
     }
+    
+    @Test
+    public void pollReturnsNullWhenQueueIsEmptyTest() {
+        Queue jono1 = new Queue(3);
+        
+        assertEquals(null, jono1.poll());
+    }
+    
+    @Test
+    public void queueSizeTest() {
+        Queue jono1 = new Queue(3);
+
+        Coordinates xy1 = new Coordinates(0, 0);
+        Coordinates xy2 = new Coordinates(1, 0);
+        Coordinates xy3 = new Coordinates(2, 0);
+        Coordinates xy4 = new Coordinates(3, 0);
+
+        jono1.add(xy1);
+        jono1.add(xy2);
+        jono1.add(xy3);
+        jono1.add(xy4);
+
+        assertEquals(4, jono1.getSize());
+    }
 
     @Test
     public void tableSizeCoordinationTest1() {

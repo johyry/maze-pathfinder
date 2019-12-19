@@ -55,7 +55,22 @@ public class BreathFirstSearchTest {
         MazeAnalyzer analyzer2 = new MazeAnalyzer(mazeExample2);
         bfs2 = new BreathFirstSearch(mazeExample2, analyzer2.findStartCoordinates(), analyzer2.findGoalCoordinates());
     }
-    
+
+    @Test
+    public void getFoundRouteTest() {
+        bfs.init();
+        int[][] foundRoute = bfs.getFoundRoute();
+        
+        int[][] fastestRoute = {
+            {0, 0, 0, 1, 0},
+            {0, 1, 1, 1, 0},
+            {0, 1, 0, 0, 0},
+            {0, 1, 0, 0, 0},
+            {0, 1, 0, 0, 0}};
+        
+        assertEquals(fastestRoute, foundRoute);
+    }
+
     @Test
     public void roundsOfCalculationsTest() {
         bfs.search();
@@ -64,7 +79,7 @@ public class BreathFirstSearchTest {
 
     @Test
     public void searchTest() {
-        assertEquals(1, bfs.search());
+        assertEquals(1, bfs.init());
     }
 
     @Test
@@ -76,6 +91,7 @@ public class BreathFirstSearchTest {
     public void searchTest2() {
         assertEquals(0, bfs2.search());
     }
+
     @Test
     public void getRouteLengthTest1() {
         bfs.search();
@@ -87,6 +103,5 @@ public class BreathFirstSearchTest {
         bfs1.search();
         assertEquals(18, bfs1.getRouteLength());
     }
-    
 
 }
