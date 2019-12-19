@@ -7,11 +7,15 @@ Testikattavuus löytyy täältä:
 
 Codecov: [![codecov](https://codecov.io/gh/johyry/maze-pathfinder/branch/master/graph/badge.svg)](https://codecov.io/gh/johyry/maze-pathfinder)
 
+Luokat on testattu kattavasti yksikkötestein. LeftWallFollower ja Thremaux luokissa joitakin yksittäistapauksia reitinvalinnassa on testaamatta, mutta luokan on kuitenkin testattu kattavasti.
 
 <h3>Suorituskykytestit</h3>
 
-Testit on suoritettu manuaalisesti mainista testaten.
+Suorituskykytestit on suoritettu mainista manuaalisesti testaten. Esimerkkilabyrintit on generoitu Daedaluksella. Heikkouksena testeissä on se, että testeihin on käytetty vain yhtä labyrinttiä per koko. Positiivisena puolena kuitenkin on se, että kyseinen labyrintti on ajettu läpi monta kertaa.
 
+Täydellisissä labyrinteissä kaikki algoritmit löytävät nopeimman reitin, koska reittejä on vain yksi. Vaikka leveyshaku käykin vähiten solmuja läpi ajettaessa, se vie kuitenkin eniten aikaa, koska muistia käytetään paljon jonon käsittelyyn. Sitä vasten leftwallfollower on nopea, koska muistissa on kulloinkin vain yksi solmu.
+
+**Täydelliset labyrintit**
 
 | Labyrintin koko  | Labyrintin tyyppi | Leveyshaku (ms) | Thremaux (ms) | LeftWallFollower (ms) | Laskentakierroksia keskimäärin (Leveyshaku) | Laskentakierroksia keskimäärin (Thremaux) | Laskentakierroksia keskimäärin (LeftWallFollower) | Keskiarvo # kierroksesta |
 | ------------- | ------------- | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: | 
@@ -21,6 +25,11 @@ Testit on suoritettu manuaalisesti mainista testaten.
 | 2501x2501 | Täydellinen | 308 | 156 | 58 | 2900208 | 3187324 | 3438121 | 100 |
 | 5001x5001 | Täydellinen | 2268 | 805 | 536 | 9238541 | 13792721 | 21625401 | 10 |
 
+![TimeUsedInPerfect](../Kuvat/timeUsedInPerfect.png)
+![NodesVisitedInPerfect](../Kuvat/nodesVisitedInPerfect.png)
+
+**Braided labyrintit**
+
 | Labyrintin koko  | Labyrintin tyyppi | Leveyshaku (ms) | Thremaux (ms) | Lyhimmän reitin pituus (Leveyshaku) | Lyhimmän reitin pituus (Thremaux) | Laskentakierroksia keskimäärin (Leveyshaku) | Laskentakierroksia keskimäärin (Thremaux) | Keskiarvo # kierroksesta |
 | ------------- | ------------- | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: | 
 | 101x101 | Braided | 1 | 0 | 268 | 948 | 4478 | 5762 | 100 | 
@@ -28,3 +37,7 @@ Testit on suoritettu manuaalisesti mainista testaten.
 | 1001x1001 | Braided | 42 | 26 | 2510 | 45080 | 449849 | 525827 | 100 | 
 | 2501x2501 | Braided | 402 | 186 | 6512 | 222099 | 2804233 | 3448630 | 100 | 
 | 5001x5001 | Braided | 3697 | 1328 | 11712 | 691084 | 11675719 | 13885985 | 10 | 
+
+![TimeUsedInPerfect](../Kuvat/timeUsedInBraided.png)
+![NodesVisitedInPerfect](../Kuvat/nodesVisitedInBraided.png)
+![RouteLenghtInPerfect](../Kuvat/routeLengthInBraided.png)
