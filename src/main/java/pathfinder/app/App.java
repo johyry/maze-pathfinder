@@ -5,6 +5,7 @@
  */
 package pathfinder.app;
 
+import imagedisplayer.ImageDisplayer;
 import java.util.Scanner;
 import pathfinder.bitmaphandler.BitmapHandler;
 import pathfinder.domain.BreathFirstSearch;
@@ -59,8 +60,10 @@ public class App {
             } else if (input1.equals("2")) {
                 if (input2.equals("1")) {
                     compareAlgorithmsInPerfectMazeAndDrawPictures(input3);
+                    displaySolvedMazes(3);
                 } else if (input2.equals("2")) {
                     compareAlgorithmsInBraidedMazeAndDrawPictures(input3);
+                    displaySolvedMazes(2);
                 }
             }
 
@@ -79,7 +82,7 @@ public class App {
 
     private void comparePerformanceOfAlgorithmsInPerfectMaze(String line2) {
 
-        BitmapHandler bitmapHandler = new BitmapHandler("mazes/perfect/example" + line2 + ".bmp");
+        BitmapHandler bitmapHandler = new BitmapHandler("/mazes/perfect/example" + line2 + ".bmp");
 
         int[][] maze = bitmapHandler.readFileAndReturnArray();
 
@@ -297,7 +300,6 @@ public class App {
         int thmxShortest = 0;
         int bfsShortest = 0;
 
-        
         Thremaux thremaux = new Thremaux(maze, start, goal);
         long time3 = System.currentTimeMillis();
         if (thremaux.init() == 1) {
@@ -323,7 +325,6 @@ public class App {
         bitmapHandler.generateJPGImageFromArray(leveyshaku.getFoundRoute(), "3");
         long summa3 = time6 - time5;
 
-        
         System.out.println("Thremaux:");
         System.out.println("Aikakeskiarvo " + summa2 + " ms");
         System.out.println("Laskukierroksia: " + thmxRounds);
@@ -334,6 +335,11 @@ public class App {
         System.out.println("Laskukierroksia keskimäärin: " + bfsRounds);
         System.out.println("Lyhin reitti keskimäärin: " + bfsShortest);
         System.out.println("");
+    }
+
+    private void displaySolvedMazes(int amount) {
+        ImageDisplayer imageDisplayer = new ImageDisplayer();
+        imageDisplayer.displayImages(amount);
     }
 
 }

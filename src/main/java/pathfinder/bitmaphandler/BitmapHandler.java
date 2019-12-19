@@ -30,7 +30,9 @@ public class BitmapHandler {
      */
     public int[][] readFileAndReturnArray() {
         try {
-            File bmpFile = new File(fileLocation);
+            ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+
+            File bmpFile = new File(classLoader.getResource(fileLocation).getFile());
             BufferedImage image = ImageIO.read(bmpFile);
 
             int[][] array2D = new int[image.getHeight()][image.getWidth()];
@@ -66,7 +68,7 @@ public class BitmapHandler {
                 }
             }
 
-            File outputfile = new File("solvedMaze" + number + ".jpg");
+            File outputfile = new File("src/main/resources/solvedmazes/solvedMaze" + number + ".jpg");
             ImageIO.write(bufferedImage, "jpg", outputfile);
         } catch (IOException exception) {
             System.out.println(exception);
