@@ -32,14 +32,6 @@ public class Thremaux {
         return search();
     }
     
-    public void printMarks() {
-        for (int y = 0; y < marked.length; y++) {
-            for (int x = 0; x < marked[0].length; x++) {
-                System.out.print(marked[y][x] + " ");
-            }
-            System.out.println();
-        }
-    }
 
     /**
      * Suorittaa itse algoritmin, palauttaa 1 jos reitti löytyi ja -1 jos ei
