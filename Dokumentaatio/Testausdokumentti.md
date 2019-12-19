@@ -11,7 +11,7 @@ Luokat on testattu kattavasti yksikkötestein. LeftWallFollower ja Thremaux luok
 
 <h3>Suorituskykytestit</h3>
 
-Suorituskykytestit on suoritettu mainista manuaalisesti testaten. Esimerkkilabyrintit on generoitu Daedaluksella. Heikkouksena testeissä on se, että testeihin on käytetty vain yhtä labyrinttiä per koko. Positiivisena puolena kuitenkin on se, että kyseinen labyrintti on ajettu läpi monta kertaa.
+Suorituskykytestit on suoritettu mainista manuaalisesti testaten. Esimerkkilabyrintit on generoitu Daedaluksella. Heikkouksena testeissä on se, että testeihin on käytetty vain yhtä labyrinttiä per koko. Positiivisena puolena kuitenkin on se, että kyseinen labyrintti on ajettu läpi monta kertaa. Samat testit voi ajaa käyttöliittymän kautta uudestaan.
 
 Täydellisissä labyrinteissä kaikki algoritmit löytävät nopeimman reitin, koska reittejä on vain yksi. Vaikka leveyshaku käykin vähiten solmuja läpi ajettaessa, se vie kuitenkin eniten aikaa, koska muistia käytetään paljon jonon käsittelyyn. Sitä vasten leftwallfollower on nopea, koska muistissa on kulloinkin vain yksi solmu.
 
@@ -25,7 +25,8 @@ Täydellisissä labyrinteissä kaikki algoritmit löytävät nopeimman reitin, k
 | 2501x2501 | Täydellinen | 308 | 156 | 58 | 2900208 | 3187324 | 3438121 | 100 |
 | 5001x5001 | Täydellinen | 2268 | 805 | 536 | 9238541 | 13792721 | 21625401 | 10 |
 
-![TimeUsedInPerfect](../Kuvat/timeUsedInPerfect.png)![NodesVisitedInPerfect](../Kuvat/nodesVisitedInPerfect.png)
+![TimeUsedInPerfect](../Kuvat/timeUsedInPerfect.png)
+![NodesVisitedInPerfect](../Kuvat/nodesVisitedInPerfect.png)
 
 **Braided labyrintit**
 
@@ -37,5 +38,6 @@ Täydellisissä labyrinteissä kaikki algoritmit löytävät nopeimman reitin, k
 | 2501x2501 | Braided | 402 | 186 | 6512 | 222099 | 2804233 | 3448630 | 100 | 
 | 5001x5001 | Braided | 3697 | 1328 | 11712 | 691084 | 11675719 | 13885985 | 10 | 
 
-![TimeUsedInPerfect](../Kuvat/timeUsedInBraided.png)![NodesVisitedInPerfect](../Kuvat/nodesVisitedInBraided.png)
+![TimeUsedInPerfect](../Kuvat/timeUsedInBraided.png)
+![NodesVisitedInPerfect](../Kuvat/nodesVisitedInBraided.png)
 ![RouteLenghtInPerfect](../Kuvat/routeLengthInBraided.png)
