@@ -44,6 +44,8 @@ Valittuasi suoritusaikavertailussa braided labyrintin pääset samaan kokovalikk
 
 Aloitusvalikossa valittuasi toimintavertailun, pääset valitsemaan samaan tapaan labyrintin tyypin ja koon. Riippuen siitä valitsitko täydellisen vai braided labyrintin ohjelma printtaa 2 tai 3 kuvaa algoritmin toimintaperjaatteista. Kuvissa breadth-first-search printtaa vain nopeimman reitin mustalla viivalla. Muut algoritmit printtaavat mustalla löydetyn nopeimman reitin ja harmaalla paikat missä algoritmi on käynyt.
 
+Kuva missä ainoastaan reitin vasemmalla (kuvassa oikealla, koska lähtö on ylhäällä) on harmaata on leftwallfollowerin kuva. Kuva missä reitin molemmilla puolella on harmaata on Thremaux. 
+
 ![toimintavertailuPerfectKoko3](../Kuvat/Kayttoohjeet/toimintavertailuPerfectKoko3.png)
 
 Suljettuasi yhden kuvan ohjelma sulkeutuu.
