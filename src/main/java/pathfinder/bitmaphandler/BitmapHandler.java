@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 /**
@@ -30,10 +31,13 @@ public class BitmapHandler {
      */
     public int[][] readFileAndReturnArray() {
         try {
-            ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-
-            File bmpFile = new File(classLoader.getResource(fileLocation).getFile());
-            BufferedImage image = ImageIO.read(bmpFile);
+//            ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+//
+//            File bmpFile = new File(classLoader.getResource(fileLocation).getFile());
+//            BufferedImage image = ImageIO.read(bmpFile);
+            InputStream is = BitmapHandler.class.getClassLoader().getResourceAsStream(fileLocation);
+            BufferedImage image = ImageIO.read(is);
+            is.close();
 
             int[][] array2D = new int[image.getHeight()][image.getWidth()];
 

@@ -39,6 +39,12 @@ jacocoTestReport {
     }
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'pathfinder.app.Main'
+    }
+}
+
 run {
     standardInput = System.in
 }

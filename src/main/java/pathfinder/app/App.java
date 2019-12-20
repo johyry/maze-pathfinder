@@ -5,7 +5,7 @@
  */
 package pathfinder.app;
 
-import imagedisplayer.ImageDisplayer;
+import pathfinder.imagedisplayer.ImageDisplayer;
 import java.util.Scanner;
 import pathfinder.bitmaphandler.BitmapHandler;
 import pathfinder.domain.BreathFirstSearch;
@@ -82,7 +82,7 @@ public class App {
 
     private void comparePerformanceOfAlgorithmsInPerfectMaze(String line2) {
 
-        BitmapHandler bitmapHandler = new BitmapHandler("/mazes/perfect/example" + line2 + ".bmp");
+        BitmapHandler bitmapHandler = new BitmapHandler("mazes/perfect/example" + line2 + ".bmp");
 
         int[][] maze = bitmapHandler.readFileAndReturnArray();
 
