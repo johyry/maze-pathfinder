@@ -2,6 +2,10 @@
 Lataa jar-tiedosto osoitteesta:
 https://github.com/johyry/maze-pathfinder/releases
 
+Kloonaa git repositorio koneellesi komennolla git@github.com:johyry/maze-pathfinder.git
+
+Siirrä lataamasi releasesta lataamasi jar tiedosto projektin juureen (Tämä siksi, että jostain syystä pelkkä jar tiedosto ei löydä generoituja kuvia jos projekti ei ole koneellasi ja jar tiedosto samassa kansiossa)
+
 Aja ohjelma komennolla java -jar maze-pathfinder.jar
 
 Saavut päävalikkoon
