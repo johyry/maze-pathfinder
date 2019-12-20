@@ -23,12 +23,15 @@ public class BreathFirstSearch {
         this.maze = maze;
         this.start = start;
         this.goal = goal;
-
     }
 
+    /**
+     * Suorittaa itse haun, palauttaa 1, jos reitti löytyi, ja 0 jos ei
+     *
+     * @return 1 jos löytyi, 0 jos ei
+     */
     public int init() {
         return search();
-
     }
 
     /**
@@ -165,6 +168,11 @@ public class BreathFirstSearch {
         return etaisyys[goal.getY()][goal.getX()];
     }
 
+    /**
+     * Palauttaa laskentakierrosten määrän
+     * 
+     * @return laskentakierrosten määrän
+     */
     public int getRoundsOfCalculations() {
         return roundsOfCalculations;
     }

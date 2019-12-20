@@ -26,15 +26,14 @@ public class BitmapHandler {
 
     /**
      * Reads the specified file Black pixel = PATH -> 1 White pixel = WALL -> 0
+     * Lukee konstruktorissa annetun tiedoston sijainnin. Muuttaa pikselit seuraavasti
+     * Musta pikseli = polku -> 1
+     * Valkoinen pikseli = seinä -> 0
      *
-     * @return Returns int[][] representing bitmap
+     * @return int[][] muodossa bitmapin
      */
     public int[][] readFileAndReturnArray() {
         try {
-//            ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-//
-//            File bmpFile = new File(classLoader.getResource(fileLocation).getFile());
-//            BufferedImage image = ImageIO.read(bmpFile);
             InputStream is = BitmapHandler.class.getClassLoader().getResourceAsStream(fileLocation);
             BufferedImage image = ImageIO.read(is);
             is.close();
@@ -59,6 +58,13 @@ public class BitmapHandler {
         }
     }
 
+    /**
+     * Generoi JPG tiedoston annetusta taulukosta (labyrintistä)
+     * Generoi sen src/main/resources/solvedmazes/solvedMze + number + .jpg
+     *
+     * @param int[][] array (maze)
+     * @param number (tiedostonnumero nr)
+     */
     public void generateJPGImageFromArray(int[][] array, String number) {
         try {
 
@@ -80,6 +86,15 @@ public class BitmapHandler {
 
     }
 
+    /**
+     * Changes values 0 -> white, 1 -> black, 2 -> grey RPG values
+     * from the array
+     * Muuttaa arvot seuraavasti: 0 -> valkoinen, 1 -> musta, 2 -> harmaa
+     * RBG arvoiksi
+     *
+     * @param int[][] array (maze)
+     * @return taulukko värit vaihdettuna RBG arvoihin
+     */
     private int[][] changeArrayToRGBValues(int[][] array) {
         for (int y = 0; y < array.length; y++) {
             for (int x = 0; x < array[0].length; x++) {

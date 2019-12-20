@@ -493,10 +493,23 @@ public class Thremaux {
         }
     }
 
+    /**
+     * Palauttaa laskentakierrosten määrän
+     * 
+     * @return laskentakierrosten määrän
+     */
     public int getRoundsOfCalculations() {
         return roundsOfCalculations;
     }
 
+    /**
+     * Palauttaa taulukon käydyistä ruuduista
+     * 1 = käyty kerran
+     * 2 = käyty kahdesti
+     * 0 = ei käyty
+     * 
+     * @return taulukko int[][] käydyistä ruuduista
+     */
     public int[][] getMarked() {
         return marked;
     }

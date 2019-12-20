@@ -23,15 +23,19 @@ public class LeftWallFollower {
         table2DInitAsZeros(marked);
     }
 
+    /**
+     * Suorittaa itse haun, palauttaa 1, jos reitti löytyi, ja 0 jos ei
+     *
+     * @return 1 jos löytyi, 0 jos ei
+     */
     public int init() {
         return search();
-
     }
 
     /**
-     * Suorittaa itse haun. Palauttaa laskukierrosten määrän.
+     * Suorittaa itse haun. Palauttaa 1 jos reitti löytyi, 0 jos ei
      *
-     * @return int määrän suorituskertoja loopissa joka etsii reittiä
+     * @return 1 jos löytyi, 0 jos ei
      */
     public int search() {
         Coordinates current = start;
@@ -107,6 +111,12 @@ public class LeftWallFollower {
         return next;
     }
 
+    /**
+     * Liikkuu labyrintissa eteenpäin pitäen aina vasemman käden seinässä.
+     * Edellinen ruutu ylempänä
+     *
+     * @return seuraavan pisteen Coordinates -olio
+     */
     public Coordinates nextStepWhenPreviousWasUp(Coordinates current, Coordinates previous) {
         int y = current.getY();
         int x = current.getX();
@@ -134,6 +144,12 @@ public class LeftWallFollower {
         return previous;
     }
 
+    /**
+     * Liikkuu labyrintissa eteenpäin pitäen aina vasemman käden seinässä.
+     * Edellinen ruutu oikealla
+     *
+     * @return seuraavan pisteen Coordinates -olio
+     */
     public Coordinates nextStepWhenPreviousWasRight(Coordinates current, Coordinates previous) {
         int y = current.getY();
         int x = current.getX();
@@ -163,6 +179,12 @@ public class LeftWallFollower {
         return previous;
     }
 
+    /**
+     * Liikkuu labyrintissa eteenpäin pitäen aina vasemman käden seinässä.
+     * Edellinen ruutu alhaalla
+     *
+     * @return seuraavan pisteen Coordinates -olio
+     */
     public Coordinates nextStepWhenPreviousWasDown(Coordinates current, Coordinates previous) {
         int y = current.getY();
         int x = current.getX();
@@ -190,6 +212,12 @@ public class LeftWallFollower {
         return previous;
     }
 
+    /**
+     * Liikkuu labyrintissa eteenpäin pitäen aina vasemman käden seinässä.
+     * Edellinen ruutu vasemmalla
+     *
+     * @return seuraavan pisteen Coordinates -olio
+     */
     public Coordinates nextStepWhenPreviousWasLeft(Coordinates current, Coordinates previous) {
         int y = current.getY();
         int x = current.getX();
@@ -220,6 +248,7 @@ public class LeftWallFollower {
         return previous;
     }
     
+    
     private void table2DInitAsZeros(int[][] table) {
         for (int y = 0; y < table.length; y++) {
             for (int x = 0; x < table[0].length; x++) {
@@ -228,10 +257,23 @@ public class LeftWallFollower {
         }
     }
 
+    /**
+     * Palauttaa laskentakierrosten määrän
+     * 
+     * @return laskentakierrosten määrän
+     */
     public int getRoundsOfCalculations() {
         return roundsOfCalculations;
     }
 
+    /**
+     * Palauttaa taulukon käydyistä ruuduista
+     * 1 = käyty kerran
+     * 2 = käyty kahdesti
+     * 0 = ei käyty
+     * 
+     * @return taulukko int[][] käydyistä ruuduista
+     */
     public int[][] getMarked() {
         return marked;
     }

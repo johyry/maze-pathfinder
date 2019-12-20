@@ -108,7 +108,10 @@ public class Queue {
         return size == 0;
     }
 
-    
+    /**
+     * Palauttaa senhetkisen taulukon koon
+     * @return int taulukon koko missä jonoa simuloidaan
+     */
     public int getTableSize() {
         return tableSize;
     }

@@ -15,6 +15,10 @@ import javax.swing.JLabel;
  */
 public class ImageDisplayer extends JFrame {
 
+    /**
+     *  Näyttää ratkaistut labyrintit
+     * @param amount 3 jos täydellinen labyrintti, 2 muuten jos braided
+     */
     public void displayImages(int amount) {
         if (amount == 3) {
             JFrame frame = new JFrame();
