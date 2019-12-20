@@ -33,6 +33,8 @@ jacocoTestReport {
                         '**/Main**',
                         'pathfinder.bitmapreader/**',
                         '**/BitmapHandler**',
+                        'pathfinder.imagedisplayer/**',
+                        '**/ImageDisplayer**',
                         'pathfinder.domain/**',
                         '**/CoordinatesXY**'])
             })
